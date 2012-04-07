@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/repoupdater.css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % repoupdaterDTD SYSTEM "chrome://lsfbar/locale/plugins/repoupdater.dtd">
+    %repoupdaterDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <prefpane id="repoupdater">
+        <vbox flex="1">
+            <box flex="1">
+                <vbox class="table" flex="1">
+                    <box class="table-head">
+                        <label class="table-head title" value="&lsfbar.repoupdater.settings.groups;"/>
+                    </box>
+                    <box id="rep-group-list" class="table-items"></box>
+                </vbox>
+
+                <separator width="5"/>
+
+                <vbox class="table" flex="2">
+                    <box class="table-head">
+                        <label class="table-head title" value="&lsfbar.repoupdater.settings.projs;"/>
+                    </box>
+                    <box id="rep-proj-list" class="table-items"></box>
+                </vbox>
+            </box>
+
+            <separator height="5"/>
+
+            <box align="baseline">
+                <button id="rep-group-add"
+                        class="add concealed"
+                        data-action="add"
+                        label="&lsfbar.repoupdater.settings.group.add;"/>
+
+                <spacer flex="1" />
+
+                <description>&lsfbar.repoupdater.settings.grouping;</description>
+                <menulist id="rep-project-group"
+                          class="rep-project-group concealed">
+
+                    <menupopup>
+                        <menuitem label="&lsfbar.repoupdater.settings.grouping.serv;" value=""/>
+                        <menuitem label="&lsfbar.repoupdater.settings.grouping.proj;" value="1"/>
+                    </menupopup>
+                </menulist>
+
+                <button id="rep-project-update"
+                        orient="horizontal"
+                        class="rep-project-update">
+
+                    <image src="chrome://lsfbar/skin/images/wait-small.gif"  />
+                    <label value="&lsfbar.repoupdater.settings.refresh;" />
+                </button>
+            </box>
+        </vbox>
+    </prefpane>
+</overlay>

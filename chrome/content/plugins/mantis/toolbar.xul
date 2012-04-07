@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://lsfbar/skin/plugins/mantis.css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % mantisDTD SYSTEM "chrome://lsfbar/locale/plugins/mantis.dtd">
+    %mantisDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/mantis/toolbar.js"/>
+
+    <toolbaritem id="lsfbar-toolbar-mantis"
+                 class="chromeclass-toolbar-additional"
+                 label="&lsfbar.mantis.label;"
+                 toolbarsetimg="chrome://lsfbar/skin/images/mantis-24x24.png">
+
+        <mantis />
+    </toolbaritem>
+</overlay>

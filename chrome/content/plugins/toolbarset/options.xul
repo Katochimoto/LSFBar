@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/toolbarset.css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % toolbarsetDTD SYSTEM "chrome://lsfbar/locale/plugins/toolbarset.dtd">
+    %toolbarsetDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <prefpane id="toolbarset">
+        <hbox flex="1">
+            <vbox flex="1" id="toolbarset-palette-box-base">
+                <label value="&lsfbar.toolbarset.select;"/>
+                <separator height="3"/>
+                <listbox flex="1" id="toolbarset-palette-box"></listbox>
+            </vbox>
+
+            <separator width="3"/>
+
+            <vbox>
+                <spacer flex="1"/>
+                <button id="toolbarset-palette-append" class="right" />
+                <button id="toolbarset-palette-delete" class="left" />
+                <spacer flex="1"/>
+            </vbox>
+
+            <separator width="3"/>
+
+            <vbox flex="4" id="toolbarset-palette-current-base">
+                <label value="&lsfbar.toolbarset.current;"/>
+                <separator height="3"/>
+                <listbox flex="1" id="toolbarset-palette-current"></listbox>
+            </vbox>
+        </hbox>
+    </prefpane>
+</overlay>

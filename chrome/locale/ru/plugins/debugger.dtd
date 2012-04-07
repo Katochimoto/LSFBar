@@ -1,0 +1,46 @@
+<!ENTITY lsfbar.debugger.label "Дебаггер">
+<!ENTITY lsfbar.debugger.query.label "Трассировка запросов">
+<!ENTITY lsfbar.debugger.templ.label "Трассировка шаблонов">
+<!ENTITY lsfbar.debugger.error.label "Вывод ошибок">
+<!ENTITY lsfbar.debugger.other.label "Другое">
+<!ENTITY lsfbar.debugger.apply.label "Применить">
+<!ENTITY lsfbar.debugger.nextapply.label "Применить при следующем переходе">
+
+
+<!ENTITY lsfbar.debugger.settings.hostedit.title "Редактирование хоста">
+<!ENTITY lsfbar.debugger.settings.hostedit.name "Название:">
+<!ENTITY lsfbar.debugger.settings.hostedit.trcdb "Трассировка запросов">
+<!ENTITY lsfbar.debugger.settings.hostedit.trctempl "Трассировка шаблонов">
+<!ENTITY lsfbar.debugger.settings.hostedit.trcerr "Вывод ошибок">
+<!ENTITY lsfbar.debugger.settings.hostedit.trcother "Другое">
+<!ENTITY lsfbar.debugger.settings.checkhost "Выполнять проверку хоста">
+
+<!ENTITY lsfbar.debugger.settings.debug.caption "Дебаггер">
+<!ENTITY lsfbar.debugger.settings.debug.default "По умолчанию:">
+<!ENTITY lsfbar.debugger.settings.debug.host "Хост:">
+<!ENTITY lsfbar.debugger.settings.debug.hostadd "Добавить">
+<!ENTITY lsfbar.debugger.settings.debug.hostedit "Изменить">
+<!ENTITY lsfbar.debugger.settings.debug.hostdel "Удалить">
+<!ENTITY lsfbar.debugger.settings.debug.trcdb "Трассировка запросов">
+<!ENTITY lsfbar.debugger.settings.debug.trctempl "Трассировка шаблонов">
+<!ENTITY lsfbar.debugger.settings.debug.trcerr "Вывод ошибок">
+<!ENTITY lsfbar.debugger.settings.debug.trcother "Другое">
+<!ENTITY lsfbar.debugger.settings.debug.varname "Название">
+<!ENTITY lsfbar.debugger.settings.debug.varvalue "Значение">
+<!ENTITY lsfbar.debugger.settings.debug.varisget "Get">
+<!ENTITY lsfbar.debugger.settings.debug.variscookies "Cookies">
+<!ENTITY lsfbar.debugger.settings.debug.vartrcdb "Db">
+<!ENTITY lsfbar.debugger.settings.debug.vartrctempl "Templ">
+<!ENTITY lsfbar.debugger.settings.debug.vartrcerr "Err">
+<!ENTITY lsfbar.debugger.settings.debug.vartrcother "Other">
+<!ENTITY lsfbar.debugger.settings.debug.varadd "Добавить">
+
+<!ENTITY lsfbar.debugger.settings.varedit.title "Редактирование параметра">
+<!ENTITY lsfbar.debugger.settings.varedit.name "Название:">
+<!ENTITY lsfbar.debugger.settings.varedit.value "Значение:">
+<!ENTITY lsfbar.debugger.settings.varedit.isget "GET">
+<!ENTITY lsfbar.debugger.settings.varedit.iscookies "COOKIES">
+<!ENTITY lsfbar.debugger.settings.varedit.trcdb "Трассировка запросов">
+<!ENTITY lsfbar.debugger.settings.varedit.trctempl "Трассировка шаблонов">
+<!ENTITY lsfbar.debugger.settings.varedit.trcerr "Вывод ошибок">
+<!ENTITY lsfbar.debugger.settings.varedit.trcother "Другое">

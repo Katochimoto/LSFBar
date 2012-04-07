@@ -1,0 +1,62 @@
+@import url("chrome://global/skin/");
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+dialog {
+  -moz-appearance: none;
+  width: 390px;
+  min-height: 320px;
+  padding: 0 5px 8px 0;
+  margin: 0;
+  color: #000 !important;
+  background-color: #fff !important;
+  background-image: url("chrome://lsfbar/skin/images/logols.png") !important;
+  background-repeat: no-repeat !important;
+}
+
+dialog button[dlgtype="accept"] {
+  min-width: 92px;
+}
+
+#lsfbar-about-box {
+  font-size: 13px;
+  font-weight: normal;
+  font-family: Arial, 'Lucida Grande', sans-serif;
+  margin: 10px 10px 10px 210px;
+}
+
+html|* {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+
+html|h2 {
+  font-size: 2.1em;
+}
+
+html|h3 {
+  font-size: 1em;
+  color: #808080;
+}
+
+html|p#bar-site {
+  margin-top: 1.4em;
+}
+
+html|a {
+  color: blue;
+  text-decoration: underline;
+  outline: none;
+}
+
+html|div#bar-copyright {
+  color: #808080;
+}
+
+html|div#bar-copyright html|img {
+  display: block;
+  margin: 0 0 16px 0;
+  padding: 0;
+}

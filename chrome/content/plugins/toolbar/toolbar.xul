@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/toolbar.css" type="text/css"?>
+
+<?xul-overlay href="chrome://lsfbar/content/plugins/menu/toolbar.xul"?>
+<?xul-overlay href="chrome://lsfbar/content/plugins/tools/toolbar.xul"?>
+<?xul-overlay href="chrome://lsfbar/content/plugins/debugger/toolbar.xul"?>
+<?xul-overlay href="chrome://lsfbar/content/plugins/mantis/toolbar.xul"?>
+<?xul-overlay href="chrome://lsfbar/content/plugins/repoupdater/toolbar.xul"?>
+<?xul-overlay href="chrome://lsfbar/content/plugins/searcher/toolbar.xul"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <toolbarpalette id="BrowserToolbarPalette">
+        <toolbarbutton id="lsfbar-toolbar-menu"/>
+        <toolbarbutton id="lsfbar-toolbar-tools"/>
+        <toolbarbutton id="lsfbar-toolbar-debugger"/>
+        <toolbaritem id="lsfbar-toolbar-mantis"/>
+        <toolbarbutton id="lsfbar-toolbar-repoupdater" />
+        <toolbaritem id="lsfbar-toolbar-searcher" />
+    </toolbarpalette>
+
+    <toolbox id="navigator-toolbox">
+        <toolbar id="lsfbar-toolbar"
+                 toolbarname="LightSoft Toolbar"
+                 class="chromeclass-toolbar lsfbar-toolbar"
+                 context="toolbar-context-menu"
+                 customizable="true"
+                 mode="icons"
+                 iconsize="small"
+                 defaultset="lsfbar-toolbar-menu,lsfbar-toolbar-searcher,lsfbar-toolbar-tools,spring,lsfbar-toolbar-mantis">
+        </toolbar>
+    </toolbox>
+</overlay>

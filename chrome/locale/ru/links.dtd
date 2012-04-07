@@ -1,0 +1,56 @@
+<!ENTITY lsfbar.link.home "http://code.google.com/p/lsfbar/">
+<!ENTITY lsfbar.link.lightsoft "http://www.lightsoft.ru/">
+<!ENTITY lsfbar.link.mediatravel "http://www.mediatravel.ru/">
+<!ENTITY lsfbar.link.tophotels "http://www.tophotels.ru/">
+<!ENTITY lsfbar.link.turpoisk "http://www.turpoisk.ru/">
+<!ENTITY lsfbar.link.travelview "http://www.travelview.ru/">
+<!ENTITY lsfbar.link.traveltalk "http://www.traveltalk.ru/">
+<!ENTITY lsfbar.link.travelpassport "http://www.travelpassport.ru/">
+<!ENTITY lsfbar.link.tasker "http://www.tasker.ru/">
+<!ENTITY lsfbar.link.hotelspassport "http://www.hotelspassport.ru/">
+<!ENTITY lsfbar.link.hoteladmin "http://www.hoteladmin.ru/">
+<!ENTITY lsfbar.link.hotelsnews "http://www.hotelsnews.ru/">
+<!ENTITY lsfbar.link.tourindex "http://www.tourindex.ru/">
+<!ENTITY lsfbar.link.tourmarket "http://www.tourmarket.info/">
+<!ENTITY lsfbar.link.hotelbook "http://www.hotelbook.ru/">
+<!ENTITY lsfbar.link.ams "http://ams.tourmarket.info/">
+<!ENTITY lsfbar.link.allspo "http://www.allspo.ru/">
+<!ENTITY lsfbar.link.tourmanager "http://www.tourmanager.ru/">
+<!ENTITY lsfbar.link.travelsoft "http://www.travelsoft.ru/">
+<!ENTITY lsfbar.link.travelinform "http://www.travelinform.ru/">
+<!ENTITY lsfbar.link.spolist "http://www.spolist.ru/">
+<!ENTITY lsfbar.link.iavia "http://www.iavia.ru/">
+<!ENTITY lsfbar.link.tourbook "http://www.tourbook.ru/">
+<!ENTITY lsfbar.link.travelinformer "http://www.travelinformer.ru/">
+<!ENTITY lsfbar.link.mylightsoft "http://my.lightsoft.ru/">
+<!ENTITY lsfbar.link.wiki "http://wiki2.lbc.ru/">
+<!ENTITY lsfbar.link.tracker "http://ls1.ru/">
+<!ENTITY lsfbar.link.servers "http://ls-server.ls1.ru/">
+<!ENTITY lsfbar.link.repoupdater "http://ls-server.ls1.ru/repoupdater">
+<!ENTITY lsfbar.link.zabbix "http://zabbix.lbc.ru/">
+<!ENTITY lsfbar.link.rutraveler "http://www.rutraveler.ru/">
+
+<!-- http://suggest.yandex.ru/suggest-ff.cgi?part= -->
+<!ENTITY lsfbar.searchengine.tophotels.autocomplete.url "http://tophotels.ru/action.php?action=lsfbar_hotel_search&amp;q=">
+<!ENTITY lsfbar.searchengine.tophotels.search.url "http://tophotels.ru/main/hotels/?CO=0&amp;srch=1&amp;allid=&amp;name=">
+<!ENTITY lsfbar.searchengine.tophotels.icon "tophotels-16x16.png">
+<!ENTITY lsfbar.searchengine.tophotels.tooltiptext "Поиск отелей">
+<!ENTITY lsfbar.searchengine.tophotels.name "TopHotels">
+
+<!ENTITY lsfbar.searchengine.turpoisk.autocomplete.url "">
+<!ENTITY lsfbar.searchengine.turpoisk.search.url "http://turpoisk.ru/search?ct=1000&amp;searchid=134272&amp;text=">
+<!ENTITY lsfbar.searchengine.turpoisk.icon "turpoisk-16x16.png">
+<!ENTITY lsfbar.searchengine.turpoisk.tooltiptext "Народный поиск тура">
+<!ENTITY lsfbar.searchengine.turpoisk.name "TurPoisk">
+
+<!ENTITY lsfbar.searchengine.wiki.autocomplete.url "">
+<!ENTITY lsfbar.searchengine.wiki.search.url "http://wiki2.lbc.ru/w/index.php?search=">
+<!ENTITY lsfbar.searchengine.wiki.icon "wikipedia-16x16.png">
+<!ENTITY lsfbar.searchengine.wiki.tooltiptext "База знаний LightSoft">
+<!ENTITY lsfbar.searchengine.wiki.name "База знаний">
+
+<!ENTITY lsfbar.searchengine.mantis.autocomplete.url "">
+<!ENTITY lsfbar.searchengine.mantis.search.url "http://ls1.ru/view.php?id=">
+<!ENTITY lsfbar.searchengine.mantis.icon "mantis-16x16.png">
+<!ENTITY lsfbar.searchengine.mantis.tooltiptext "Mantis">
+<!ENTITY lsfbar.searchengine.mantis.name "Mantis">

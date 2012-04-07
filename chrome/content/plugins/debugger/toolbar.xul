@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://lsfbar/skin/plugins/debugger.css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % debuggerDTD SYSTEM "chrome://lsfbar/locale/plugins/debugger.dtd">
+    %debuggerDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript"
+            src="chrome://lsfbar/content/plugins/debugger/toolbar.js"/>
+
+    <toolbarbutton id="lsfbar-toolbar-debugger"
+                   class="chromeclass-toolbar-additional"
+                   type="menu-button"
+                   disabled="true"
+                   data-action="run"
+                   label="&lsfbar.debugger.label;"
+                   tooltiptext="&lsfbar.debugger.label;"
+                   toolbarsetimg="chrome://lsfbar/skin/images/debugger-24x24.png">
+        
+        <menupopup id="lsfbar-toolbar-debugger-popup">
+            <menuitem class="menuitem-iconic lsfbar-toolbar-debugger-trace-item"
+                      type="checkbox"
+                      trc="trc_db"
+                      checked="false"
+                      disabled="true"
+                      data-action="settingchange"
+                      label="&lsfbar.debugger.query.label;"/>
+                                  
+            <menuitem class="menuitem-iconic lsfbar-toolbar-debugger-trace-item"
+                      type="checkbox"
+                      trc="trc_templ"
+                      checked="false"
+                      disabled="true"
+                      data-action="settingchange"
+                      label="&lsfbar.debugger.templ.label;"/>
+                                  
+            <menuitem class="menuitem-iconic lsfbar-toolbar-debugger-trace-item"
+                      type="checkbox"
+                      trc="trc_err"
+                      checked="false"
+                      disabled="true"
+                      data-action="settingchange"
+                      label="&lsfbar.debugger.error.label;"/>
+                                  
+            <menuitem class="menuitem-iconic lsfbar-toolbar-debugger-trace-item"
+                      type="checkbox"
+                      trc="trc_other"
+                      checked="false"
+                      disabled="true"
+                      data-action="settingchange"
+                      label="&lsfbar.debugger.other.label;"/>
+                                
+            <menuseparator />
+                            
+            <menuitem id="lsfbar-toolbar-debugger-nextrun"
+                      class="menuitem-iconic"
+                      type="checkbox"
+                      checked="false"
+                      disabled="true"
+                      data-action="nextrun"
+                      label="&lsfbar.debugger.nextapply.label;"/>
+        </menupopup>
+    </toolbarbutton>
+</overlay>

@@ -1,0 +1,39 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace svg url("http://www.w3.org/2000/svg");
+
+mantis {
+    -moz-binding: url("chrome://lsfbar/content/plugins/mantis/toolbar-binding.xml#mantis");
+}
+
+.mantis {list-style-image: url("chrome://lsfbar/skin/images/mantis-24x24.png");}
+toolbar[iconsize="small"] .mantis {list-style-image: url("chrome://lsfbar/skin/images/mantis-16x16.png");}
+
+.tasks-box button {
+    -moz-appearance: toolbarbutton;
+    -moz-box-align: center;
+    height: auto;
+    min-height: 20px;
+    min-width: 20px;
+    margin: 0 3px 0 0;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+
+.tasks-box button label {
+    margin: 0 0 0 3px;
+    padding: 0;
+}
+
+svg|circle.task {
+    fill: #ffffff;
+    fill-rule: evenodd;
+    stroke: #666666;
+    stroke-width: 1px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-opacity: 1;
+    fill-opacity: 0.7
+}

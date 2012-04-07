@@ -1,0 +1,19 @@
+@import url("chrome://global/skin/");
+@import url("chrome://lsfbar-platform-style/content/lsfbar.css");
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* для вывода иконки в панели кнопок, стиль должен быть тут */
+#lsfbar-toolbar-menu {list-style-image: url("chrome://lsfbar/skin/images/lightsoft-24x24.png");}
+toolbar[iconsize="small"] #lsfbar-toolbar-menu {list-style-image: url("chrome://lsfbar/skin/images/lightsoft-16x16.png");}
+
+#lsfbar-toolbar-tools {list-style-image: url("chrome://lsfbar/skin/images/utilities-24x24.png");}
+toolbar[iconsize="small"] #lsfbar-toolbar-tools {list-style-image: url("chrome://lsfbar/skin/images/utilities-16x16.png");}
+
+#lsfbar-toolbar-debugger {list-style-image: url("chrome://lsfbar/skin/images/debugger-24x24.png");}
+toolbar[iconsize="small"] #lsfbar-toolbar-debugger {list-style-image: url("chrome://lsfbar/skin/images/debugger-16x16.png");}
+
+#lsfbar-toolbar-repoupdater {list-style-image: url("chrome://lsfbar/skin/images/repoupdater-24x24.png");}
+toolbar[iconsize="small"] #lsfbar-toolbar-repoupdater {list-style-image: url("chrome://lsfbar/skin/images/repoupdater-16x16.png");}
+
+#lsfbar-toolbar-mantis {list-style-image: url("chrome://lsfbar/skin/images/mantis-24x24.png");}
+toolbar[iconsize="small"] #lsfbar-toolbar-mantis {list-style-image: url("chrome://lsfbar/skin/images/mantis-16x16.png");}

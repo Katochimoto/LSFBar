@@ -1,0 +1,30 @@
+# XPCOM
+component {e55bb0bc-8224-475b-93ac-054b725071cf} components/nsCore.js
+contract @lightsoft.ru/lsfbar;1 {e55bb0bc-8224-475b-93ac-054b725071cf}
+
+component {93935c0d-bb55-435b-82f0-b0cfe4dd8980} components/nsSearchbox.js
+contract @lightsoft.ru/searchbox;1 {93935c0d-bb55-435b-82f0-b0cfe4dd8980}
+
+component {51b57672-5deb-47eb-853a-c9fd6097d455} components/nsILsfBarSuggestion.js
+contract @mozilla.org/autocomplete/search;1?name=lsfsearch-autocomplete {51b57672-5deb-47eb-853a-c9fd6097d455}
+
+
+
+# XCOMViewer package
+content lsfbar chrome/content/
+content lsfbar chrome/content/ contentaccessible=yes
+
+resource lsfbar modules/
+
+skin lsfbar classic chrome/skin/classic/
+locale lsfbar ru chrome/locale/ru/
+
+
+# Overlays for Mozilla Firefox
+overlay chrome://browser/content/browser.xul chrome://lsfbar/content/lsfbar.xul
+#overlay chrome://global/content/customizeToolbar.xul chrome://lsfbar/content/start-button/toolbar.xul
+#overlay chrome://mozapps/content/extensions/about.xul chrome://lsfbar/content/about/about.xul
+#overlay chrome://navigator/content/navigator.xul chrome://lsfbar/content/lsfbar.xul
+style chrome://global/content/customizeToolbar.xul chrome://lsfbar/skin/lsfbar.css
+
+content lsfbar-platform-style chrome://lsfbar/skin/platform-style/ platform

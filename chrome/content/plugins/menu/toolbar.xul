@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/menu.css" type="text/css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % menuDTD SYSTEM "chrome://lsfbar/locale/plugins/menu.dtd">
+    %menuDTD;
+    
+    <!ENTITY % linksDTD SYSTEM "chrome://lsfbar/locale/links.dtd">
+    %linksDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/menu/toolbar.js"/>
+
+    <toolbarbutton id="lsfbar-toolbar-menu"
+                   class="toolbarbutton-1 chromeclass-toolbar-additional lsfbar-toolbar-menu"
+                   type="menu-button"
+                   label="&lsfbar.menu.project.lightsoft.label;"
+                   tooltiptext="&lsfbar.menu.project.lightsoft.label;"
+                   href="&lsfbar.link.lightsoft;"
+                   toolbarsetimg="chrome://lsfbar/skin/images/lightsoft-24x24.png">
+        
+        <menupopup class="lsfbar-toolbar-menu-popup"></menupopup>
+    </toolbarbutton>
+</overlay>

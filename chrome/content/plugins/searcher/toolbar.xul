@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/searcher.css" type="text/css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % searcherDTD SYSTEM "chrome://lsfbar/locale/plugins/searcher.dtd">
+    %searcherDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <toolbaritem id="lsfbar-toolbar-searcher"
+                 class="chromeclass-toolbar-additional"
+                 label="&lsfbar.searcher.label;"
+                 toolbarsetimg="chrome://lsfbar/skin/images/searcher-24x24.png">
+
+        <lsfsearch />
+    </toolbaritem>
+</overlay>

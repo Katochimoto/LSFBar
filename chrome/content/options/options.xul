@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/options.css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % optionsDTD SYSTEM "chrome://lsfbar/locale/options.dtd">
+    %optionsDTD;
+]>
+
+<prefwindow id="appOptions"
+            title="&lsfbar.options.title;"
+            windowtype="lsfbar:options"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <prefpane id="toolbarset"
+              label="&lsfbar.options.toolbarset.label;"
+              image="chrome://lsfbar/skin/images/settings-32x32.png"
+              src="chrome://lsfbar/content/plugins/toolbarset/options.xul"
+              onpaneload="optionsToolbarset.init();" />
+
+    <prefpane id="mantis" 
+              label="&lsfbar.options.mantis.label;" 
+              image="chrome://lsfbar/skin/images/mantis-32x32.png"
+              src="chrome://lsfbar/content/plugins/mantis/options.xul"
+              onpaneload="optionsMantis.init();"/>
+
+    <prefpane id="debugger"
+              label="&lsfbar.options.debugger.label;"
+              image="chrome://lsfbar/skin/images/debugger-32x32.png"
+              src="chrome://lsfbar/content/plugins/debugger/options.xul"
+              onpaneload="optionsDebugger.init();"/>
+
+    <prefpane id="repoupdater"
+              label="&lsfbar.options.repoupdater.label;"
+              image="chrome://lsfbar/skin/images/repoupdater-32x32.png"
+              src="chrome://lsfbar/content/plugins/repoupdater/options.xul"
+              onpaneload="optionsRepoupdater.init();"/>
+
+
+    <script src="chrome://global/content/nsDragAndDrop.js"/>
+    <script src="chrome://global/content/nsTransferable.js"/>
+    <script type="application/x-javascript" src="chrome://lsfbar/content/options/options.js"/>
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/toolbarset/options.js"/>
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/mantis/options.js"/>
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/debugger/options.js"/>
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/repoupdater/options.js"/>
+</prefwindow>

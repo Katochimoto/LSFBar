@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/repoupdater.css"?>
+
+<!DOCTYPE window [
+    <!ENTITY % repoupdaterDTD SYSTEM "chrome://lsfbar/locale/plugins/repoupdater.dtd">
+    %repoupdaterDTD;
+]>
+
+<window id="lsfbar-repoupdater-window"
+        windowtype="lsfbar:repoupdater"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="&lsfbar.repoupdater.descr;">
+
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/repoupdater/win-repoupdater.js"/>
+
+    <vbox flex="100%">
+        <vbox flex="1">
+            <box class="btbox">
+                <button class="btbox-item concealed" data-action="rep-action" value="update" label="&lsfbar.repoupdater.action.updatehead;"/>
+                <button class="btbox-item concealed" data-action="rep-action" value="cleanup" label="&lsfbar.repoupdater.action.cleanup;"/>
+                <button class="btbox-item concealed" data-action="rep-action" value="revert" label="&lsfbar.repoupdater.action.revert;"/>
+                <button class="btbox-item concealed" data-action="rep-action" value="sinfo" label="&lsfbar.repoupdater.action.info;"/>
+                <button class="btbox-item concealed" data-action="rep-action" value="rlog" label="&lsfbar.repoupdater.action.replog;"/>
+                <button class="btbox-item concealed" data-action="rep-action" value="slog" label="&lsfbar.repoupdater.action.svnlog;"/>
+                <button class="btbox-item concealed" data-action="rep-action" value="updaterevision" label="&lsfbar.repoupdater.action.updaterevision;"/>
+            </box>
+
+            <separator height="5"/>
+
+            <progressmeter id="repoupdater-action-progress" value="0" max="0" />
+
+            <separator height="5"/>
+
+            <box flex="1" class="projects">
+                <vbox class="table" flex="1">
+                    <box class="table-head">
+                        <label class="table-head title" value="&lsfbar.repoupdater.settings.groups;"/>
+                    </box>
+                    <box id="rep-group-list" class="table-items"></box>
+                </vbox>
+
+                <splitter collapse="before" resizebefore="closest" resizeafter="grow">
+                    <spring flex="1"/>
+                    <grippy/>
+                    <spring flex="1"/>
+                </splitter>
+
+                <vbox class="table" flex="2">
+                    <box class="table-head">
+                        <label class="table-head title" value="&lsfbar.repoupdater.settings.projs;"/>
+                        <button class="table-head button sort" data-action="projs-sort" tooltiptext="&lsfbar.repoupdater.sort;" />
+                        <button class="table-head button clear" data-action="projs-clearall" tooltiptext="&lsfbar.repoupdater.clearselect;" />
+                    </box>
+                    <box id="rep-proj-list" class="table-items"></box>
+                </vbox>
+            </box>
+
+            <separator height="5"/>
+
+            <box align="baseline">
+                <description data-action="log-toggle" class="rep-log-toggle">&lsfbar.repoupdater.action.detail;</description>
+
+                <spacer flex="1" />
+
+                <description>&lsfbar.repoupdater.settings.grouping;</description>
+                <menulist id="rep-project-group" class="rep-project-group concealed">
+                    <menupopup>
+                        <menuitem label="&lsfbar.repoupdater.settings.grouping.serv;" value=""/>
+                        <menuitem label="&lsfbar.repoupdater.settings.grouping.proj;" value="1"/>
+                    </menupopup>
+                </menulist>
+
+                <button id="rep-project-update"
+                        class="rep-project-update concealed"
+                        data-action="proj-update"
+                        orient="horizontal">
+
+                    <image src="chrome://lsfbar/skin/images/wait-small.gif"  />
+                    <label value="&lsfbar.repoupdater.settings.refresh;" />
+                </button>
+            </box>
+        </vbox>
+
+        <splitter class="rep-log-splitter log-toggle-action"
+                  state="open"
+                  collapse="before"
+                  resizebefore="closest"
+                  resizeafter="grow"
+                  collapsed="true">
+
+            <spring flex="1"/>
+            <grippy/>
+            <spring flex="1"/>
+        </splitter>
+
+        <box class="rep-log log-toggle-action" collapsed="true">
+            <vbox class="table">
+                <box class="table-head">
+                    <label class="table-head title" value="&lsfbar.repoupdater.action.result;"/>
+                </box>
+                <box class="table-items rep-log-items">
+                    <vbox id="rep-log-items-box" class="table-items-box rep-log-items-box">
+                        <separator class="table-items-empty"/>
+                    </vbox>
+                    <vbox class="rep-log-resp-box">
+                        <textbox id="rep-log-resp"
+                                 class="rep-log-resp"
+                                 multiline="true"
+                                 readonly="true"
+                                 searchbutton="false"
+                                 wrap="off"
+                                 value="" />
+                    </vbox>
+                </box>
+            </vbox>
+        </box>
+
+        <separator height="5"/>
+
+        <box>
+            <separator flex="1"/>
+            <button data-action="win-close" label="&lsfbar.repoupdater.window.close;" />
+        </box>
+    </vbox>
+</window>

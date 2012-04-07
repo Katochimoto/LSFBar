@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!DOCTYPE bindings [
+    <!ENTITY % mantisDTD SYSTEM "chrome://lsfbar/locale/plugins/mantis.dtd">
+    %mantisDTD;
+
+    <!ENTITY % linksDTD SYSTEM "chrome://lsfbar/locale/links.dtd">
+    %linksDTD;
+]>
+
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <binding id="mantis">
+        <resources>
+            <stylesheet src="chrome://lsfbar/skin/plugins/mantis.css"/>
+        </resources>
+
+        <content>
+            <xul:box id="lsfbar-mantis-tasksbox"
+                     class="tasks-box"
+                     anonid="tasks-box">
+            </xul:box>
+
+            <xul:toolbarbutton id="lsfbar-mantis-grouptasks"
+                               label="&lsfbar.mantis.label;"
+                               tooltiptext="&lsfbar.mantis.label;"
+                               href="&lsfbar.link.tracker;"
+                               type="menu-button"
+                               class="mantis">
+
+                <xul:menupopup anonid="mantis-tasks"
+                               hidden="true">
+                </xul:menupopup>
+            </xul:toolbarbutton>
+        </content>
+
+        <implementation>
+            <method name="getElementByAnonid">
+                <parameter name="aAnonidAttr"/>
+                <body><![CDATA[
+                    return document.getAnonymousElementByAttribute(this, 'anonid', aAnonidAttr);
+                ]]></body>
+            </method>
+
+            <field name="_popup">this.getElementByAnonid('mantis-tasks')</field>
+            <field name="_tasksBox">this.getElementByAnonid('tasks-box')</field>
+
+            <method name="rebuildTasksBox">
+                <parameter name="aTasks"/>
+                <body><![CDATA[
+                    const kXULNS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
+                    const kSVGNS = 'http://www.w3.org/2000/svg';
+
+                    let box = this._tasksBox,
+                        typeShow = Preferences.get(Mantis.PREF.TASKS_SHOW, 0),
+                        showCount = Preferences.get(Mantis.PREF.SHOW_COUNT, false);
+
+                    while (box.hasChildNodes()) {
+                        box.removeChild(box.firstChild);
+                    }
+
+                    if (!aTasks) {
+                        return;
+                    }
+
+                    for (let nick in aTasks) {
+                        let task = aTasks[nick];
+
+                        let button = document.createElementNS(kXULNS, 'button');
+                        button.setAttribute('tooltiptext', task.tooltiptext);
+                        button.setAttribute('href', task.url);
+                        
+                        // значки или значки и текст
+                        if (!typeShow || typeShow == 1) {
+                            let svg = document.createElementNS(kSVGNS, 'svg');
+                            svg.setAttribute('version', '1.1');
+                            svg.setAttribute('baseProfile', 'full');
+                            svg.setAttribute('width', '16');
+                            svg.setAttribute('height', '16');
+                        
+
+                            let circle = document.createElementNS(kSVGNS, 'circle');
+                            circle.setAttribute('cx', '8');
+                            circle.setAttribute('cy', '8');
+                            circle.setAttribute('r', '6');
+                            circle.setAttribute('class', 'task');
+                            if (task.color) {
+                                circle.setAttribute('style', 'fill: ' + task.color);
+                            }
+
+                            svg.appendChild(circle);
+                            button.appendChild(svg);
+                        }
+                        
+                        // значки и текст или текст
+                        if (typeShow == 1 || typeShow == 2) {
+                            let label = document.createElementNS(kXULNS, 'label');
+                            label.setAttribute('value', showCount ? task.text : task.name);
+                            button.appendChild(label);
+                            
+                        // только значки
+                        } else if (!typeShow && showCount && task.countText.length > 0) {
+                            let label = document.createElementNS(kXULNS, 'label');
+                            label.setAttribute('value', task.countText);
+                            button.appendChild(label);
+                        }
+
+                        box.appendChild(button);
+                    }
+                ]]></body>
+            </method>
+
+            <method name="rebuildTasksPopup">
+                <parameter name="aTasks"/>
+                <body><![CDATA[
+                    const kXULNS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
+
+                    let popup = this._popup;
+
+                    while (popup.hasChildNodes()) {
+                        popup.removeChild(popup.firstChild);
+                    }
+
+                    if (!aTasks) {
+                        return;
+                    }
+
+                    for (let nick in aTasks) {
+                        let task = aTasks[nick],
+                            menuitem = document.createElementNS(kXULNS, 'menuitem');
+
+                        menuitem.setAttribute('label', task.text);
+                        menuitem.setAttribute('href', task.url);
+                        if (task.color) {
+                            menuitem.setAttribute('style', 'color: ' + task.color);
+                        }
+                        popup.appendChild(menuitem);
+                    }
+
+                    popup.setAttribute('hidden', 'false');
+                ]]></body>
+            </method>
+        </implementation>
+    </binding>
+</bindings>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/lsfbar.css" type="text/css"?>
+
+<?xul-overlay href="chrome://lsfbar/content/plugins/toolbar/toolbar.xul"?>
+
+<overlay id="lsfbar"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    
+    <script type="application/x-javascript" src="chrome://lsfbar/content/lsfbar.js"/>
+</overlay>

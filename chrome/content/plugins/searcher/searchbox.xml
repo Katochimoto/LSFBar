@@ -1,0 +1,718 @@
+<?xml version="1.0"?>
+<!DOCTYPE bindings [
+    <!ENTITY % searcherDTD SYSTEM "chrome://lsfbar/locale/plugins/searcher.dtd">
+    %searcherDTD;
+]>
+
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <binding id="searchbox-base">
+        <resources>
+            <stylesheet src="chrome://lsfbar/skin/plugins/searcher.css"/>
+        </resources>
+    </binding>
+    
+    <binding id="searchbox-resizer"
+             extends="chrome://lsfbar/content/plugins/searcher/searchbox.xml#searchbox-base">
+                 
+        <implementation implements="nsIDOMEventListener">
+            <field name="dragging"/>
+            <field name="lastX"/>
+
+            <method name="resizerMouseMove">
+                <parameter name="event"/>
+                <body><![CDATA[
+                    if (!this.dragging) {
+                        return;
+                    }
+
+                    var xDiff = this.lastX - event.screenX;
+
+                    if (xDiff == 0) {
+                        return;
+                    }
+
+                    var currWidth = parseInt(this.parentNode.boxObject.width, 10);
+                    if (xDiff > 0) {
+                        currWidth -= xDiff;
+                    } else {
+                        var toolbar = this.parentNode.parentNode.parentNode;
+                        var toolbarWidth = parseInt(toolbar.boxObject.width, 10) - 150;
+
+                        if (currWidth < toolbarWidth) {
+                            currWidth -= xDiff;
+                        }
+                    }
+                    
+                    this.parentNode.setAttribute("width", currWidth);
+
+                    this.lastX = event.screenX;
+                ]]></body>
+            </method>
+
+            <method name="resizerMouseUp">
+                <parameter name="event"/>
+                <body><![CDATA[
+                    this.dragging = false;
+                    this.ownerDocument.documentElement.style.cursor = "";
+
+                    window.removeEventListener("mouseup", this, true);
+                    window.removeEventListener("mousemove", this, true);
+
+                    var parent = document.getBindingParent(this);
+                    parent.updateWidthOnResize();
+                ]]></body>
+            </method>
+
+            <constructor><![CDATA[
+                this.dragging = false;
+            ]]></constructor>
+
+            <method name="handleEvent">
+                <parameter name="aEvent"/>
+                <body><![CDATA[
+                    switch (aEvent.type) {
+                        case "mouseup":
+                            this.resizerMouseUp(aEvent);
+                            break;
+
+                        case "mousemove":
+                            this.resizerMouseMove(aEvent);
+                            break;
+
+                        default:
+                            break;
+                    }
+                ]]></body>
+            </method>
+        </implementation>
+
+        <handlers>
+            <handler event="mousedown" button="0"><![CDATA[
+                this.dragging = true;
+                this.lastX = event.screenX;
+
+                this.ownerDocument.documentElement.style.cursor = "e-resize";
+
+                window.addEventListener("mouseup", this, true);
+                window.addEventListener("mousemove", this, true);
+            ]]></handler>
+        </handlers>
+    </binding>
+    <!-- #searchbox-resizer -->
+    
+    <binding id="searchbox"
+             extends="chrome://lsfbar/content/plugins/searcher/searchbox.xml#searchbox-base">
+        
+        <content lsfSHistoryHeight="230"
+                 persist="lsfSHistoryWidth,lsfSHistoryHeight,searchengine,src,width">
+                     
+            <xul:stringbundle src="chrome://lsfbar/locale/plugins/searcher.properties"
+                              anonid="searchbox-stringbundle"/>
+                     
+            <xul:popupset>
+                <xul:panel id="lsfbar-searchbox-panel"
+                           class="autocomplete-history-popup"
+                           anonid="autocomplete-history-popup"
+                           type="autocomplete"
+                           noautofocus="true"
+                           hidden="true"
+                           lsfEmptyResultList="true"
+                           xbl:inherits="lsfSHistoryWidth,lsfSHistoryHeight" />
+                           
+                <xul:panel id="lsfbar-searchbox-rich-panel"
+                           class="autocomplete-history-rich-popup"
+                           anonid="autocomplete-history-rich-popup"
+                           type="autocomplete"
+                           noautofocus="true"
+                           hidden="true"
+                           lsfEmptyResultList="true"
+                           xbl:inherits="lsfSHistoryWidth,lsfSHistoryHeight" />
+            </xul:popupset>
+
+            <xul:textbox anonid="searchbox-textbox"
+                         class="searchbox-textbox"
+                         type="autocomplete"
+                         autocompletesearch="lsfsearch-autocomplete"
+                         autocompletesearchparam=""
+                         autocompletepopup="lsfbar-searchbox-panel"
+                         completeselectedindex="true"
+                         showcommentcolumn="true"
+                         tabscrolling="true"
+                         newlines="replacewithspaces"
+                         flex="1"
+                         maxlength="400"
+                         timeout="250"
+                         maxrows="20"
+                         xbl:inherits="disabled,searchengine,src">
+
+                <xul:box>
+                    <xul:button type="menu"
+                                class="searchbox-engine-button"
+                                anonid="searchbox-engine-button">
+
+                        <xul:image class="searchbox-engine-image" xbl:inherits="src"/>
+                        <xul:image class="searchbox-engine-dropmarker-image" />
+                        
+                        <xul:menupopup anonid="searchbox-engine-popup"
+                                       position="after_start">
+                        </xul:menupopup>
+                    </xul:button>
+                </xul:box>
+                <xul:hbox>
+                    <xul:button class="searchbox-search-button"
+                                tooltiptext="&lsfbar.searcher.search;"
+                                oncommand="handleSearchCommand(event)"/>
+                </xul:hbox>
+            </xul:textbox>
+            
+            <xul:searchboxresizer tooltiptext="&lsfbar.searcher.resizer;" />
+            
+        </content>
+        
+        <implementation implements="nsIObserver">
+            <method name="getElementByAnonid">
+                <parameter name="aAnonidAttr"/>
+                <body><![CDATA[
+                    return document.getAnonymousElementByAttribute(this, "anonid", aAnonidAttr);
+                ]]></body>
+            </method>
+            
+            <method name="updateCursorVisibility">
+                <body><![CDATA[
+                    if (!this._textbox.editor) {
+                        return;
+                    }
+
+                    const nsISelectionController = Components.interfaces.nsISelectionController;
+                    this._textbox.editor.selectionController.scrollSelectionIntoView(
+                        nsISelectionController.SELECTION_NORMAL,
+                        nsISelectionController.SELECTION_FOCUS_REGION,
+                        false
+                    );
+                ]]></body>
+            </method>
+            
+            <method name="updateWidthOnResize">
+                <body><![CDATA[
+                    var width = parseInt(this.ownerDocument.defaultView.getComputedStyle(this._textbox, "").width, 10);
+                    this.setAttribute("lsfSHistoryWidth", width);
+
+                    this.updateCursorVisibility();
+                ]]></body>
+            </method>
+            
+            <constructor><![CDATA[
+                setTimeout(function(me){
+                    me.init();
+                }, 0, this);
+            ]]></constructor>
+
+            <destructor><![CDATA[
+                this._currentEngine = null;
+                
+                this.nsSearchBox.searcherWidth = this.getAttribute("lsfSHistoryWidth");
+
+                if (this._textbox.mController.input == this) {
+                    this._textbox.mController.input = null;
+                }
+            ]]></destructor>
+            
+            <field name="_stringBundle">this.getElementByAnonid("searchbox-stringbundle")</field>
+            <field name="_textbox">this.getElementByAnonid("searchbox-textbox")</field>
+            <field name="_engineButton">this.getElementByAnonid("searchbox-engine-button")</field>
+            <field name="_popup">this.getElementByAnonid("searchbox-engine-popup")</field>
+            <field name="_popupResult">this.getElementByAnonid("autocomplete-history-popup")</field>
+            <field name="_popupRichResult">this.getElementByAnonid("autocomplete-history-rich-popup")</field>
+            <field name="_currentEngine">null</field>
+            
+            <property name="value"
+                      onget="return this._textbox.value;"
+                      onset="return this._textbox.value = val;"/>
+            
+            <method name="focus">
+                <body><![CDATA[
+                    this._textbox.focus();
+                ]]></body>
+            </method>
+
+            <method name="select">
+                <body><![CDATA[
+                    this._textbox.select();
+                ]]></body>
+            </method>
+            
+            <property name="nsSearchBox">
+                <getter><![CDATA[
+                    if (!this._nsSearchBox) {
+                        this._nsSearchBox = Components.classes["@lightsoft.ru/searchbox;1"]
+                            .getService()
+                            .wrappedJSObject;
+                    }
+
+                    return this._nsSearchBox;
+                ]]></getter>
+            </property>
+            
+            <method name="init">
+                <body><![CDATA[
+                    this.rebuildPopupServices();
+                    
+                    this._textbox.style.width = this.nsSearchBox.searcherWidth + "px";
+                    this.setAttribute("lsfSHistoryWidth", this.nsSearchBox.searcherWidth);
+                    
+                    if (this.currentEngine) {
+                        this.setCurrentEngine(this.currentEngine);
+                    }
+                ]]></body>
+            </method>
+            
+            <!-- обновление списка поисковиков -->
+            <method name="rebuildPopupServices">
+                <body><![CDATA[
+                    const kXULNS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+                    
+                    var popup = this._popup,
+                        enginesLs = this.nsSearchBox.searchServiceLs,
+                        engines = this.nsSearchBox.searchService.getVisibleEngines({});
+                    
+                    while (popup.hasChildNodes()) {
+                        popup.removeChild(popup.firstChild);
+                    }
+
+                    if (enginesLs.length > 0) {
+                        enginesLs.push({});
+                    }
+
+                    engines.forEach(function(engine) {
+                        enginesLs.push(engine);
+                    });
+
+                    enginesLs.forEach(function(engine) {
+                        if (engine.name) {
+                            var menuitem = document.createElementNS(kXULNS, "menuitem");
+                            menuitem.setAttribute("label", engine.name);
+                            if (engine.tooltiptext) {
+                                menuitem.setAttribute("tooltiptext", engine.tooltiptext);
+                            }
+                            if (engine.id) {
+                                menuitem.setAttribute("id", engine.id);
+                            } else {
+                                menuitem.setAttribute("id", "__" + engine.name);
+                            }
+                            menuitem.setAttribute("class", "menuitem-iconic searchbar-engine-menuitem");
+                            if (engine.iconURI) {
+                                menuitem.setAttribute("src", engine.iconURI.spec);
+                            }
+                            popup.appendChild(menuitem);
+                        } else {
+                            var menusep = document.createElementNS(kXULNS, "menuseparator");
+                            popup.appendChild(menusep);
+                        }
+                    });
+                ]]></body>
+            </method>
+            
+            <method name="setCurrentEngine">
+                <parameter name="name"/>
+                <body><![CDATA[
+                    var engine = this.nsSearchBox.setCurrentSearchEngine(name);
+
+                    if (engine) {
+                        this.setAttribute("searchengine", name);
+                        this.setAttribute("src", engine.image);
+
+                        var toolTipText = this._stringBundle.getFormattedString("searchtip", [engine.label]);
+                        this._textbox.setAttribute("tooltiptext", toolTipText);
+                        
+                        if (engine.autocomplete) {
+                            this._textbox.popup = engine.richpopup ? this._popupRichResult : this._popupResult;
+                            this._textbox.popup.setMInput(this._textbox);
+                        } else {
+                            delete this._textbox.popup;
+                        }
+                        
+                        this._currentEngine = engine;
+                    }
+                ]]></body>
+            </method>
+
+            <property name="currentEngine">
+                <getter><![CDATA[
+                    return this.getAttribute("searchengine") || this.nsSearchBox.defaultSearchengine; 
+                ]]></getter>
+
+                <setter><![CDATA[
+                    if (!val) {
+                        return;
+                    }
+
+                    this.setCurrentEngine(val);
+                ]]></setter>
+            </property>
+            
+            <method name="handleSearchCommand">
+                <parameter name="aEvent"/>
+                <body><![CDATA[
+                    var textBox = this._textbox,
+                        textValue = textBox.value;
+                    
+                    if (textValue.replace(/\s/g, "")) {
+                        var searchUrl = this.nsSearchBox.getSearchEngineUrl(this.currentEngine, textValue);
+                        if (searchUrl) {
+                            if (aEvent && aEvent.altKey) {
+                                aEvent = "tab";
+                            }
+                            
+                            this._textbox.inputField.blur();
+                            this.doSearch(searchUrl.url, aEvent, searchUrl.statData, searchUrl.postData);
+                        }
+                    }
+                ]]></body>
+            </method>
+
+            <method name="doSearch">
+                <parameter name="aURL"/>
+                <parameter name="aEvent"/>
+                <parameter name="aStatData"/>
+                <parameter name="aPostData"/>
+                <body><![CDATA[
+                    Http.openURL(aURL, aEvent, aStatData || null, aPostData || null);
+                ]]></body>
+            </method>
+        </implementation>
+        
+        <handlers>
+            <handler event="click" button="0" phase="capturing"><![CDATA[
+                if (event.originalTarget.localName == "div") {
+                    setTimeout(function(aTextbox) {
+                        if (!aTextbox.popup.mPopupOpen && !aTextbox.popup.isEmptyResultList) {
+                            aTextbox.openPopup();
+                        }
+                    }, 0, this._textbox);
+                }
+            ]]></handler>
+
+            <!-- срабатывает при изменении поисковика и нажатии на кнопку поиска -->
+            <handler event="command"><![CDATA[
+                const target = event.originalTarget;
+                
+                // выполнение только при выборе поисковика из списка
+                if (target.getAttribute("class").indexOf("searchbar-engine-menuitem") != -1) {
+                    this.currentEngine = target.getAttribute("id");
+                    this.focus();
+                    this.select();
+                }
+            ]]></handler>
+        </handlers>
+    </binding>
+    <!-- #searchbox -->
+    
+    <binding id="searchbox-textbox"
+             extends="chrome://global/content/bindings/autocomplete.xml#autocomplete">
+        
+        <implementation implements="nsIAutoCompleteInput, nsIObserver, nsIDOMEventListener">
+            <method name="realClosePopup">
+                <body><![CDATA[
+                    var popup = this.popup;
+                    if (popup.mPopupOpen) {
+                        popup.hidePopup();
+                        document.popupNode = null;
+                    }
+                ]]></body>
+            </method>
+
+            <method name="closePopup">
+                <body><![CDATA[
+                  var popup = this.popup;
+                  if (popup.mPopupOpen) {
+                      popup.view = this.controller.QueryInterface(Components.interfaces.nsITreeView);
+                      popup.invalidate();
+
+                      if (this.mController.matchCount == 0) {
+                          this.realClosePopup();
+                      }
+                  }
+                ]]></body>
+            </method>
+            
+            <method name="openPopup">
+                <body><![CDATA[
+                    var popup = this.popup;
+                    
+                    if (popup.mPopupOpen) {
+                        popup.view = this.controller.QueryInterface(Components.interfaces.nsITreeView);
+                        popup.invalidate();
+                    } else {
+                        popup.hidden = false;
+                        
+                        popup.setMInput(this);
+                        popup.view = this.controller.QueryInterface(Components.interfaces.nsITreeView);
+                        popup.invalidate();
+
+                        popup.showCommentColumn = this.showCommentColumn;
+                        popup.showImageColumn = this.showImageColumn;
+
+                        document.popupNode = null;
+                        
+                        var x = this.boxObject.screenX;
+                        var y = this.boxObject.screenY + this.boxObject.height;
+
+                        popup.showPopup(document.documentElement, x, y, "popup", null, null);
+                    }
+                ]]></body>
+            </method>
+
+            <method name="onSearchComplete">
+                <body><![CDATA[
+                    if (this.mController.matchCount == 0) {
+                        this.realClosePopup();
+                    }
+                ]]></body>
+            </method>
+
+            <method name="openSearch">
+                <body><![CDATA[
+                    this.realClosePopup();
+
+                    document.getBindingParent(this)._engineButton.open = true;
+                    return false;
+                ]]></body>
+            </method>
+
+            <!--
+              срабатывает при нажатии на Enter в строке ввода
+              отправляет запрос поиска
+            -->
+            <method name="onTextEntered">
+                <parameter name="aEvent"/>
+                <body><![CDATA[
+                    var evt = aEvent || this.mEnterEvent;
+                    document.getBindingParent(this).handleSearchCommand(evt);
+                    this.mEnterEvent = null;
+                    this.realClosePopup();
+                ]]></body>
+            </method>
+        </implementation>
+        
+        <handlers>
+            <!-- фокус на любом блоке поисковика -->
+            <handler event="focus" phase="capturing"><![CDATA[
+                if (
+                    event.originalTarget.localName == "input"
+                    && !this.popup.mPopupOpen
+                ) {
+                    if (this.value) {
+                        setTimeout(function(me) {
+                            me.mConsumeRollupEvent = true;
+                            me.attachController();
+                            me.mController.startSearch(me.value);
+                        }, 0, this)
+                    } else {
+                        this.onSearchComplete();
+                    }
+                }
+            ]]></handler>
+
+            <!-- потеря фокуса -->
+            <handler event="blur" phase="capturing"><![CDATA[
+                if (this.popup.mPopupOpen) {
+                    this.realClosePopup();
+                }
+                
+                document.commandDispatcher.focusedElement = null;
+            ]]></handler>
+
+            <!-- доделать, если нет результата и окно открыто, то закрываем -->
+            <handler event="keypress" phase="capturing"><![CDATA[
+                if (
+                    event.keyCode === event.DOM_VK_TAB &&
+                    this.popup.mPopupOpen &&
+                    this.popup.isEmptyResultList
+                ) {
+                    this.realClosePopup();
+                }
+            ]]></handler>
+        </handlers>
+    </binding>
+    <!-- #searchbox-textbox -->
+    
+    <binding id="searchbox-popup-autocomplete"
+             extends="chrome://global/content/bindings/autocomplete.xml#autocomplete-result-popup">
+                 
+        <resources>
+            <stylesheet src="chrome://global/skin/tree.css"/>
+            <stylesheet src="chrome://global/skin/autocomplete.css"/>
+            <stylesheet src="chrome://lsfbar/skin/plugins/searcher.css"/>
+        </resources>
+        
+        <content ignorekeys="true">
+            <xul:tree anonid="tree" 
+                      class="autocomplete-tree plain" 
+                      flex="1"
+                      hidescrollbar="true" 
+                      hidecolumnpicker="true" 
+                      seltype="single"
+                      xbl:inherits="width=lsfSHistoryWidth,height=lsfSHistoryHeight,collapsed=lsfEmptyResultList">
+
+                <xul:treecols anonid="treecols">
+                    <xul:treecol id="treecolAutoCompleteValue" class="autocomplete-treecol" flex="2" overflow="true"/>
+                </xul:treecols>
+                
+                <xul:treechildren class="autocomplete-treebody"/>
+            </xul:tree>
+        </content>
+        
+        <implementation>
+            <property name="isEmptyResultList"
+                      readonly="true"
+                      onget="return this.getAttribute('lsfEmptyResultList') == 'true';"/>
+
+            <method name="adjustHeight">
+                <body><![CDATA[
+                    var bx = this.tree.treeBoxObject;
+                    var view = this.tree.view;
+                    if (!view) {
+                        return;
+                    }
+
+                    var height = view.rowCount * bx.rowHeight;
+
+                    if (height == 0) {
+                        this.setAttribute("lsfEmptyResultList", "true");
+                    } else {
+                        if (this.hasAttribute("lsfEmptyResultList")) {
+                            this.removeAttribute("lsfEmptyResultList");
+                        }
+                    }
+
+                    this.tree.setAttribute("hidescrollbar", height <= bx.height);
+                ]]></body>
+            </method>
+            
+            <!--
+              вызывается при открытии окна,
+              перерисосывает список,
+              добавляет скрол, если высота меньше области с данными
+            -->
+            <method name="invalidate">
+                <parameter name="aScope"/>
+                <body><![CDATA[
+                    var me = aScope || this;
+                    me.adjustHeight();
+                    me.tree.treeBoxObject.invalidate();
+                ]]></body>
+            </method>
+            
+            <method name="setMInput">
+                <parameter name="aInput"/>
+                <body><![CDATA[
+                    this.mInput = aInput;
+                ]]></body>
+            </method>
+        </implementation>
+
+        <handlers>
+            <handler event="popupshowing"><![CDATA[
+                this.mPopupOpen = true;
+            ]]></handler>
+
+            <handler event="popuphiding"><![CDATA[
+                this.mPopupOpen = false;
+                this.selectedIndex = -1;
+            ]]></handler>
+        </handlers>
+    </binding>
+    <!-- #searchbox-popup-autocomplete -->
+    
+    
+    <binding id="searchbox-popup-rich-autocomplete"
+             extends="chrome://global/content/bindings/autocomplete.xml#autocomplete-rich-result-popup">
+                 
+        <resources>
+            <stylesheet src="chrome://global/skin/tree.css"/>
+            <stylesheet src="chrome://global/skin/autocomplete.css"/>
+            <stylesheet src="chrome://lsfbar/skin/plugins/searcher.css"/>
+        </resources>
+        
+        <content ignorekeys="true" level="top">
+            <xul:richlistbox anonid="richlistbox" 
+                             class="autocomplete-richlistbox" 
+                             flex="1"
+                             xbl:inherits="width=lsfSHistoryWidth,height=lsfSHistoryHeight,collapsed=lsfEmptyResultList"/>
+            
+            <xul:hbox>
+                <children/>
+            </xul:hbox>
+        </content>
+        
+        <implementation implements="nsIAutoCompletePopup">
+            <property name="isEmptyResultList"
+                      readonly="true"
+                      onget="return this.getAttribute('lsfEmptyResultList') == 'true';"/>
+                      
+            <method name="adjustHeight">
+                <body><![CDATA[
+                    let rows = this.richlistbox.childNodes;
+                    let numRows = Math.min(this._matchCount, this.maxRows, rows.length);
+
+                    let height = 0;
+                    if (numRows) {
+                        let firstRowRect = rows[0].getBoundingClientRect();
+                        let lastRowRect = rows[numRows - 1].getBoundingClientRect();
+                        height = lastRowRect.bottom - firstRowRect.top;
+                    }
+
+                    if (height && height != this.richlistbox.height) {
+                        this.richlistbox.height = height;
+                    }
+                    
+                    if (height) {
+                        if (this.hasAttribute("lsfEmptyResultList")) {
+                            this.removeAttribute("lsfEmptyResultList");
+                        }
+                    } else {
+                        this.setAttribute("lsfEmptyResultList", "true");
+                    }
+                ]]></body>
+            </method>
+
+            <!--
+              вызывается при открытии окна,
+              перерисосывает список,
+              добавляет скрол, если высота меньше области с данными
+            -->
+            <method name="invalidate">
+                <body><![CDATA[
+                    if (!this.mPopupOpen) {
+                        return;
+                    }
+                    
+                    this.adjustHeight();
+                    this._invalidate();
+                ]]></body>
+            </method>
+            
+            <method name="setMInput">
+                <parameter name="aInput"/>
+                <body><![CDATA[
+                    this.mInput = aInput;
+                ]]></body>
+            </method>
+        </implementation>
+
+        <handlers>
+            <handler event="popupshowing"><![CDATA[
+                this.mPopupOpen = true;
+            ]]></handler>
+
+            <handler event="popuphiding"><![CDATA[
+                this.mPopupOpen = false;
+                this.selectedIndex = -1;
+            ]]></handler>
+        </handlers>
+    </binding>
+    <!-- #searchbox-popup-rich-autocomplete -->
+</bindings>

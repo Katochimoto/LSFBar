@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % toolsDTD SYSTEM "chrome://lsfbar/locale/plugins/tools.dtd">
+    %toolsDTD;
+]>
+
+<?xul-overlay href="chrome://lsfbar/content/plugins/debugger/options.xul"?>
+        <!--
+<?xul-overlay href="chrome://lsfbar/content/plugins/repoupdater/options.xul"?>
+-->
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <prefpane id="tools">
+        <tabbox flex="1">
+            <tabs>
+                <tab label="&lsfbar.tooling.settings.dbg;"/>
+                <!--
+                <tab label="&lsfbar.tooling.settings.repoupdater;"/>
+                -->
+            </tabs>
+            <tabpanels>
+                <tabpanel>
+                    <box id="lsfbar-plugins-debugger-options" />
+                </tabpanel>
+                <!--
+                <tabpanel>
+                    <box id="lsfbar-plugins-repoupdater-options" />
+                </tabpanel>
+                -->
+            </tabpanels>
+        </tabbox>
+    </prefpane>
+</overlay>

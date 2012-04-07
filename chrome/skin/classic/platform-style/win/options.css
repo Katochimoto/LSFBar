@@ -1,0 +1,14 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+prefwindow {
+    -moz-appearance: none;
+    min-width: 700px;
+    min-height: 500px;
+    padding: 0;
+    margin: 0;
+    color: #000 !important;
+}
+
+.flex {
+    -moz-box-flex: 1;
+}

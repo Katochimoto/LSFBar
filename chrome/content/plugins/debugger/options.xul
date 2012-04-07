@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % debuggerDTD SYSTEM "chrome://lsfbar/locale/plugins/debugger.dtd">
+    %debuggerDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <prefpane id="debugger">
+        <vbox flex="1">
+            <description>&lsfbar.debugger.settings.debug.default;</description>
+            <box>
+                <vbox>
+                    <checkbox id="debugger-trcdb"
+                              label="&lsfbar.debugger.settings.debug.trcdb;" />
+                    <checkbox id="debugger-trctempl"
+                              label="&lsfbar.debugger.settings.debug.trctempl;" />
+                    <checkbox id="debugger-trcerr"
+                              label="&lsfbar.debugger.settings.debug.trcerr;" />
+                    <checkbox id="debugger-trcother"
+                              label="&lsfbar.debugger.settings.debug.trcother;" />
+                </vbox>
+                <vbox flex="1">
+                    <listbox rows="4" flex="1" id="lsfbar-dbg-settings-defvarlist">
+                        <listhead>
+                            <listheader label="&lsfbar.debugger.settings.debug.varname;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.varvalue;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.varisget;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.variscookies;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrcdb;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrctempl;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrcerr;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrcother;"/>
+                            <listheader label=""/>
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listcols>
+                            <listcol class="flex" />
+                            <listcol class="flex" />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                        </listcols>
+                    </listbox>
+                    <box>
+                        <spacer flex="1" />
+                        <button id="lsfbar-dbg-settings-defvaradd"
+                                tooltiptext="&lsfbar.debugger.settings.debug.varadd;"
+                                label="&lsfbar.debugger.settings.debug.varadd;"
+                                orient="vertical" />
+                    </box>
+                </vbox>
+            </box>
+
+            <checkbox id="debugger-checkhost"
+                      label="&lsfbar.debugger.settings.checkhost;" />
+
+            <description>&lsfbar.debugger.settings.debug.host;</description>
+
+            <box>
+                <menulist flex="1" id="lsfbar-dbg-settings-hostslist">
+                    <menupopup>
+                    </menupopup>
+                </menulist>
+                <button id="lsfbar-dbg-settings-hostadd"
+                        tooltiptext="&lsfbar.debugger.settings.debug.hostadd;"
+                        label="&lsfbar.debugger.settings.debug.hostadd;"
+                        orient="vertical"/>
+                <button id="lsfbar-dbg-settings-hostedit"
+                        tooltiptext="&lsfbar.debugger.settings.debug.hostedit;"
+                        label="&lsfbar.debugger.settings.debug.hostedit;"
+                        orient="vertical"
+                        disabled="true"/>
+                <button id="lsfbar-dbg-settings-hostdel"
+                        tooltiptext="&lsfbar.debugger.settings.debug.hostdel;"
+                        label="&lsfbar.debugger.settings.debug.hostdel;"
+                        orient="vertical"
+                        disabled="true"/>
+            </box>
+
+            <separator height="10"/>
+
+            <box>
+                <vbox>
+                    <checkbox label="&lsfbar.debugger.settings.debug.trcdb;"
+                              id="lsfbar-dbg-settings-trcdb"
+                              disabled="true" />
+                    <checkbox label="&lsfbar.debugger.settings.debug.trctempl;"
+                              id="lsfbar-dbg-settings-trctempl"
+                              disabled="true" />
+                    <checkbox label="&lsfbar.debugger.settings.debug.trcerr;"
+                              id="lsfbar-dbg-settings-trcerr"
+                              disabled="true" />
+                    <checkbox label="&lsfbar.debugger.settings.debug.trcother;"
+                              id="lsfbar-dbg-settings-trcother"
+                              disabled="true" />
+                </vbox>
+                <vbox flex="1">
+                    <listbox rows="4" flex="1" id="lsfbar-dbg-settings-varlist">
+                        <listhead>
+                            <listheader label="&lsfbar.debugger.settings.debug.varname;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.varvalue;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.varisget;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.variscookies;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrcdb;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrctempl;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrcerr;"/>
+                            <listheader label="&lsfbar.debugger.settings.debug.vartrcother;"/>
+                            <listheader label=""/>
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listcols>
+                            <listcol class="flex" />
+                            <listcol class="flex" />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                            <listcol />
+                        </listcols>
+                    </listbox>
+                    <box>
+                        <spacer flex="1" />
+                        <button id="lsfbar-dbg-settings-varadd"
+                                tooltiptext="&lsfbar.debugger.settings.debug.varadd;"
+                                label="&lsfbar.debugger.settings.debug.varadd;"
+                                orient="vertical"
+                                disabled="true"/>
+                    </box>
+                </vbox>
+            </box>
+        </vbox>
+    </prefpane>
+</overlay>

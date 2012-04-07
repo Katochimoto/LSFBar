@@ -1,0 +1,100 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+lsfsearch {
+    -moz-binding: url("chrome://lsfbar/content/plugins/searcher/searchbox.xml#searchbox");
+}
+
+/* результат поиска */
+.autocomplete-history-popup {
+    -moz-binding: url("chrome://lsfbar/content/plugins/searcher/searchbox.xml#searchbox-popup-autocomplete") !important;
+    min-width: 15em !important;
+    max-height: none !important;
+}
+
+.autocomplete-history-rich-popup {
+    -moz-binding: url("chrome://lsfbar/content/plugins/searcher/searchbox.xml#searchbox-popup-rich-autocomplete") !important;
+    min-width: 15em !important;
+    max-height: none !important;
+}
+
+.autocomplete-treecol {
+    -moz-box-flex: 0 !important;
+    text-align: left;
+    min-width: 5em !important;
+}
+
+/* строка ввода запроса */
+.searchbox-textbox {
+    -moz-binding: url("chrome://lsfbar/content/plugins/searcher/searchbox.xml#searchbox-textbox");
+    -moz-appearance: none;
+    -moz-border-top-colors: ThreeDShadow;
+    -moz-border-bottom-colors: ThreeDShadow;
+    -moz-border-right-colors: ThreeDShadow;
+    -moz-border-left-colors: ThreeDShadow;
+    -moz-border-radius: 5px;
+    border-width: 1px;
+    margin: 1px 2px;
+    min-width: 200px;
+    width: 200px;
+}
+
+/* кнопка раскрытия списка истории поиска */
+.searchbox-textbox > .autocomplete-history-dropmarker {opacity: 0.3;}
+.searchbox-textbox > .autocomplete-history-dropmarker:hover {opacity: 1;}
+
+/* кнопка выбора места поиска */
+.searchbox-engine-button {
+    -moz-appearance: none;
+    -moz-margin-end: 3px;
+    -moz-box-align: center;
+    height: auto;
+    min-height: 20px;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 0 3px;
+    background: transparent;
+    border: none;
+}
+
+.searchbox-engine-button > .searchbox-engine-image {list-style-image: url("chrome://lsfbar/skin/images/tophotels-16x16.png");}
+.searchbox-engine-button > .searchbox-engine-dropmarker-image {list-style-image: url("chrome://lsfbar/skin/images/search-arrow.gif");margin: 0 0 -10px -2px;}
+
+.searchbox-engine-button > hbox,
+.searchbox-engine-button > hbox hbox {
+    -moz-appearance: none;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+
+.searchbox-search-button {
+    -moz-appearance: none;
+    -moz-box-align: center;
+    list-style-image: url("chrome://lsfbar/skin/images/searcher-16x16.png");
+    height: auto;
+    min-height: 20px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* ресайзер */
+searchboxresizer {
+    -moz-binding: url("chrome://lsfbar/content/plugins/searcher/searchbox.xml#searchbox-resizer");
+    background: transparent url("chrome://lsfbar/skin/images/splitter-w-arrows.png") 0 center no-repeat;
+    width: 11px;
+    height: 20px;
+    margin: 1px 0px 2px -2px;
+    cursor: e-resize;
+}
+
+searchboxresizer:hover,
+searchboxresizer:active {
+    background-position: -16px center;
+}

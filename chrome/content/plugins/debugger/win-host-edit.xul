@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % debuggerDTD SYSTEM "chrome://lsfbar/locale/plugins/debugger.dtd">
+    %debuggerDTD;
+]>
+
+<dialog title="&lsfbar.debugger.settings.hostedit.title;"
+    id="lsfbar-settings-tools-hostedit"
+    windowtype="lsfbar:settingstoolshostedit"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    onload="onLoad();"
+    ondialogaccept="return onOK();">
+
+    <script type="application/javascript" src="chrome://lsfbar/content/plugins/debugger/win-host-edit.js"/>
+
+    <grid>
+        <columns><column/><column/></columns>
+        <rows>
+            <row align="center">
+                <textbox id="hostId" value="0" style="display: none;"/>
+                <label value="&lsfbar.debugger.settings.hostedit.name;"/>
+                <textbox id="name" maxlength="50"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_db" label="&lsfbar.debugger.settings.hostedit.trcdb;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_templ" label="&lsfbar.debugger.settings.hostedit.trctempl;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_err" label="&lsfbar.debugger.settings.hostedit.trcerr;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_other" label="&lsfbar.debugger.settings.hostedit.trcother;"/>
+            </row>
+        </rows>
+    </grid>
+</dialog>

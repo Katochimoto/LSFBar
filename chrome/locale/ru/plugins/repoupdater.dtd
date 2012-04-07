@@ -1,0 +1,32 @@
+<!ENTITY lsfbar.repoupdater.label "Repoupdater">
+<!ENTITY lsfbar.repoupdater.descr "Обновление проектов">
+<!ENTITY lsfbar.repoupdater.settings.groupedit.title "Редактирование группы">
+<!ENTITY lsfbar.repoupdater.settings.groupedit.name "Название:">
+<!ENTITY lsfbar.repoupdater.settings.groupedit.host "Хост:">
+<!ENTITY lsfbar.repoupdater.settings.groups "Группы">
+<!ENTITY lsfbar.repoupdater.settings.group.name "Название">
+<!ENTITY lsfbar.repoupdater.settings.group.host "Хост">
+<!ENTITY lsfbar.repoupdater.settings.group.add "Добавить">
+<!ENTITY lsfbar.repoupdater.settings.group.edit "Ред.">
+<!ENTITY lsfbar.repoupdater.settings.group.del "Уд.">
+<!ENTITY lsfbar.repoupdater.settings.projs "Проекты">
+<!ENTITY lsfbar.repoupdater.settings.grouping "Группировка">
+<!ENTITY lsfbar.repoupdater.settings.grouping.serv "По серверам">
+<!ENTITY lsfbar.repoupdater.settings.grouping.proj "По проектам">
+<!ENTITY lsfbar.repoupdater.settings.refresh "Обновить список проектов">
+<!ENTITY lsfbar.repoupdater.confirm.project "Проект">
+<!ENTITY lsfbar.repoupdater.confirm.server "Сервер">
+<!ENTITY lsfbar.repoupdater.confirm.noaccess "Недостаточно прав для выполнения операции">
+<!ENTITY lsfbar.repoupdater.window.close "Закрыть">
+<!ENTITY lsfbar.repoupdater.action.clearall "снять выделение">
+<!ENTITY lsfbar.repoupdater.action.detail "подробно">
+<!ENTITY lsfbar.repoupdater.action.result "Результат">
+<!ENTITY lsfbar.repoupdater.action.updatehead "Update to head">
+<!ENTITY lsfbar.repoupdater.action.cleanup "Cleanup">
+<!ENTITY lsfbar.repoupdater.action.revert "Revert local changes">
+<!ENTITY lsfbar.repoupdater.action.info "SVN info">
+<!ENTITY lsfbar.repoupdater.action.replog "Rep. log">
+<!ENTITY lsfbar.repoupdater.action.svnlog "SVN log">
+<!ENTITY lsfbar.repoupdater.action.updaterevision "Update to revision">
+<!ENTITY lsfbar.repoupdater.sort "Сортировать">
+<!ENTITY lsfbar.repoupdater.clearselect "Снять выделение">

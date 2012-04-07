@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/repoupdater.css"?>
+
+<!DOCTYPE dialog [
+    <!ENTITY % repoupdaterDTD SYSTEM "chrome://lsfbar/locale/plugins/repoupdater.dtd">
+    %repoupdaterDTD;
+]>
+
+<dialog id="lsfbar-repoupdater-confirm"
+        windowtype="lsfbar:repoupdaterconfirm"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept,cancel"
+        title="&lsfbar.repoupdater.descr;"
+        ondialogaccept="return winConfirm.accept();">
+
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/repoupdater/win-confirm.js"/>
+
+    <vbox flex="1">
+        <description id="confirm-text" />
+        <listbox flex="1" id="confirm-proj">
+            <listhead>
+                <listheader label="&lsfbar.repoupdater.confirm.project;"/>
+                <listheader label="&lsfbar.repoupdater.confirm.server;"/>
+            </listhead>
+            <listcols>
+                <listcol flex="1" />
+                <listcol flex="1" />
+            </listcols>
+        </listbox>
+        <vbox id="confirm-proj-dis-box" flex="1" collapsed="true">
+            <description value="&lsfbar.repoupdater.confirm.noaccess;" />
+            <listbox flex="1" id="confirm-proj-dis">
+                <listhead>
+                    <listheader label="&lsfbar.repoupdater.confirm.project;"/>
+                    <listheader label="&lsfbar.repoupdater.confirm.server;"/>
+                </listhead>
+                <listcols>
+                    <listcol flex="1" />
+                    <listcol flex="1" />
+                </listcols>
+            </listbox>
+        </vbox>
+    </vbox>
+</dialog>

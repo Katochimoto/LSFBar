@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/tools.css" type="text/css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % toolsDTD SYSTEM "chrome://lsfbar/locale/plugins/tools.dtd">
+    %toolsDTD;
+]>
+
+
+<?xul-overlay href="chrome://lsfbar/content/plugins/debugger/tools-menu.xul"?>
+<?xul-overlay href="chrome://lsfbar/content/plugins/repoupdater/tools-menu.xul"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript"
+            src="chrome://lsfbar/content/plugins/tools/toolbar.js"/>
+
+    <toolbarbutton id="lsfbar-toolbar-tools"
+                   type="menu"
+                   label="&lsfbar.tooling.label;"
+                   tooltiptext="&lsfbar.tooling.label;"
+                   toolbarsetimg="chrome://lsfbar/skin/images/utilities-24x24.png"
+                   class="chromeclass-toolbar-additional">
+
+        <menupopup>
+            <menuitem id="lsfbar-toolbar-tools-repoupdater" />
+            <menu id="lsfbar-toolbar-tools-debugger" />
+            <menuseparator />
+
+            <menuitem class="menuitem-iconic lsfbar-toolbar-tools-options"
+                      label="&lsfbar.tooling.settings.label;" />
+        </menupopup>
+    </toolbarbutton>
+</overlay>

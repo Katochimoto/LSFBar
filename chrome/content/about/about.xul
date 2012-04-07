@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/about.css"?>
+
+<!DOCTYPE window [
+    <!ENTITY % linksDTD SYSTEM "chrome://lsfbar/locale/links.dtd" >
+    %linksDTD;
+
+    <!ENTITY % aboutDTD SYSTEM "chrome://lsfbar/locale/about.dtd" >
+    %aboutDTD;
+]>
+
+<dialog id="lsfbar-about-dialog"
+        windowtype="LSFBar:AboutDialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        buttons="accept"
+        title="&lsfbar.about.label;"
+        onload="LSFAbout.onOpenDialog();">
+
+    <script type="application/x-javascript" src="chrome://lsfbar/content/about/about.js"/>
+
+    <vbox flex="1" id="lsfbar-about-box">
+        <html:h2>&lsfbar._gen.bar.title;</html:h2>
+        <html:h3>&lsfbar.about.bar.for.label; Mozilla Firefox</html:h3>
+
+        <separator class="thin" flex="1"/>
+
+        <html:p id="bar-version">&lsfbar.about.bar.version.label;: <html:span/></html:p>
+        <html:p id="bar-date">&lsfbar.about.bar.date.label;: <html:span>21.07.2011</html:span></html:p>
+
+        <html:p id="bar-site">
+            <html:a onclick="return LSFAbout.openBarSite(this);"
+                    href="&lsfbar.link.home;">&lsfbar.about.bar.site.label;</html:a>
+        </html:p>
+
+        <separator flex="1"/>
+
+        <html:div id="bar-copyright">
+            &#169; 2001&#160;&#8211;<html:span id="copyright-year">&#160;2011</html:span>
+            &#171;&lsfbar.about.bar.lsf.label;&#187;
+        </html:div>
+
+        <separator flex="5"/>
+    </vbox>
+</dialog>

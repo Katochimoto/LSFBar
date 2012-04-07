@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/repoupdater.css" type="text/css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % repoupdaterDTD SYSTEM "chrome://lsfbar/locale/plugins/repoupdater.dtd">
+    %repoupdaterDTD;
+
+    <!ENTITY % linksDTD SYSTEM "chrome://lsfbar/locale/links.dtd">
+    %linksDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://lsfbar/content/plugins/repoupdater/toolbar.js"/>
+
+    <toolbarbutton id="lsfbar-toolbar-repoupdater"
+                   class="toolbarbutton-1 chromeclass-toolbar-additional"
+                   type="menu-button"
+                   label="&lsfbar.repoupdater.label;"
+                   tooltiptext="&lsfbar.repoupdater.label;"
+                   toolbarsetimg="chrome://lsfbar/skin/images/repoupdater-24x24.png">
+        
+        <menupopup>
+            <menuitem label="&lsfbar.repoupdater.descr;" href="&lsfbar.link.repoupdater;" />
+        </menupopup>
+    </toolbarbutton>
+</overlay>

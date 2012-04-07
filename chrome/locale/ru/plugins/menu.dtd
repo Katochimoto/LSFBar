@@ -1,0 +1,65 @@
+<!ENTITY lsfbar.menu.group.tourist.label "Туристические сервисы">
+<!ENTITY lsfbar.menu.group.hotel.label "Сервисы для отелей">
+<!ENTITY lsfbar.menu.group.prof.label "Сервисы для профессионалов">
+<!ENTITY lsfbar.menu.group.work.label "Сервисы для сотрудников">
+
+<!ENTITY lsfbar.menu.project.lightsoft.label "LightSoft">
+<!ENTITY lsfbar.menu.project.lightsoft.tooltiptext "Перейти к домашней странице LightSoft">
+<!ENTITY lsfbar.menu.project.mediatravel.label "Рекламные кампании в туризме">
+<!ENTITY lsfbar.menu.project.mediatravel.tooltiptext "Mediatravel. Рекламные кампании в туризме">
+<!ENTITY lsfbar.menu.project.travelpassport.label "TravelPassport">
+<!ENTITY lsfbar.menu.project.travelpassport.tooltiptext "TravelPassport. Единая система авторизации на туристических сайтах">
+<!ENTITY lsfbar.menu.project.tophotels.label "Все отели мира">
+<!ENTITY lsfbar.menu.project.tophotels.tooltiptext "TopHotels. Рейтинг отелей и гостиниц мира">
+<!ENTITY lsfbar.menu.project.turpoisk.label "Поиск туров">
+<!ENTITY lsfbar.menu.project.turpoisk.tooltiptext "TurPoisk. Поиск туров и отелей всего мира">
+<!ENTITY lsfbar.menu.project.travelview.label "Фотографии стран">
+<!ENTITY lsfbar.menu.project.travelview.tooltiptext "TravelView. Мир в объективах туристов">
+<!ENTITY lsfbar.menu.project.traveltalk.label "Туристический форум">
+<!ENTITY lsfbar.menu.project.traveltalk.tooltiptext "TravelTalk. Большой туристический форум">
+<!ENTITY lsfbar.menu.project.hotelspassport.label "HotelsPassport">
+<!ENTITY lsfbar.menu.project.hotelspassport.tooltiptext "HotelsPassport. Система управления сервисами для хотельеров">
+<!ENTITY lsfbar.menu.project.rutraveler.label "RuTraveller">
+<!ENTITY lsfbar.menu.project.rutraveler.tooltiptext "">
+<!ENTITY lsfbar.menu.project.hoteladmin.label "Решения для отельного бизнеса">
+<!ENTITY lsfbar.menu.project.hoteladmin.tooltiptext "HotelAdmin. Разработка, создание сайтов для отелей, гостиниц">
+<!ENTITY lsfbar.menu.project.hotelsnews.label "Свежие новости отелей">
+<!ENTITY lsfbar.menu.project.hotelsnews.tooltiptext "HotelsNews. Свежие новости отелей">
+<!ENTITY lsfbar.menu.project.tourindex.label "Поисковая система по турам">
+<!ENTITY lsfbar.menu.project.tourindex.tooltiptext "TourIndex. Поисковая система по турам">
+<!ENTITY lsfbar.menu.project.allspo.label "База данных предложений туроператоров">
+<!ENTITY lsfbar.menu.project.allspo.tooltiptext "AllSPO. Единая база данных предложений туроператоров">
+<!ENTITY lsfbar.menu.project.spolist.label "Рассылка СПО">
+<!ENTITY lsfbar.menu.project.spolist.tooltiptext "SPOList. Рассылка оперативной информации о выходах СПО">
+<!ENTITY lsfbar.menu.project.tourmarket.label "Маркетинг в туризме">
+<!ENTITY lsfbar.menu.project.tourmarket.tooltiptext "TourMarket. Маркетинг в туризме, аналитика, отели, предложения">
+<!ENTITY lsfbar.menu.project.ams.label "AMS">
+<!ENTITY lsfbar.menu.project.ams.tooltiptext "AMS. Система управления информацией об операторе на ресурсах LightSoft">
+<!ENTITY lsfbar.menu.project.iavia.label "Расписание чартерных рейсов">
+<!ENTITY lsfbar.menu.project.iavia.tooltiptext "IAvia. Расписание чартерных рейсов">
+<!ENTITY lsfbar.menu.project.travelinform.label "Информационная система">
+<!ENTITY lsfbar.menu.project.travelinform.tooltiptext "TravelInform. Турбизнес для профессионалов">
+<!ENTITY lsfbar.menu.project.hotelbook.label "Система online-бронирования">
+<!ENTITY lsfbar.menu.project.hotelbook.tooltiptext "HotelBook. Система online бронирования отелей по всему миру">
+<!ENTITY lsfbar.menu.project.tourmanager.label "Программа автоматизации турагентств">
+<!ENTITY lsfbar.menu.project.tourmanager.tooltiptext "TourMANAGER. Программа автоматизации турагентств">
+<!ENTITY lsfbar.menu.project.tourbook.label "Прямое бронирование туров">
+<!ENTITY lsfbar.menu.project.tourbook.tooltiptext "TourBook. Прямое бронирование туров">
+<!ENTITY lsfbar.menu.project.travelsoft.label "Софт для туризма">
+<!ENTITY lsfbar.menu.project.travelsoft.tooltiptext "TravelSoft. Решения для туризма от LightSoft">
+<!ENTITY lsfbar.menu.project.travelinformer.label "Туринформеры">
+<!ENTITY lsfbar.menu.project.travelinformer.tooltiptext "TravelInformer. Бесплатные туринформеры">
+<!ENTITY lsfbar.menu.project.mylightsoft.label "Business Community">
+<!ENTITY lsfbar.menu.project.mylightsoft.tooltiptext "My.LightSoft.ru. Lightsoft Business Community">
+<!ENTITY lsfbar.menu.project.wiki.label "База знаний">
+<!ENTITY lsfbar.menu.project.wiki.tooltiptext "wiki2.lbc.ru. База знаний">
+<!ENTITY lsfbar.menu.project.tracker.label "Mantis">
+<!ENTITY lsfbar.menu.project.tracker.tooltiptext "">
+<!ENTITY lsfbar.menu.project.servers.label "Серверы LightSoft">
+<!ENTITY lsfbar.menu.project.servers.tooltiptext "">
+<!ENTITY lsfbar.menu.project.zabbix.label "Zabbix">
+<!ENTITY lsfbar.menu.project.zabbix.tooltiptext "">
+<!ENTITY lsfbar.menu.project.tasker.label "Центр поддержки">
+<!ENTITY lsfbar.menu.project.tasker.tooltiptext "Tasker. Центр поддержки для клиентов компании LightSoft">
+
+

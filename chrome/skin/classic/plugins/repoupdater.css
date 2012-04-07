@@ -1,0 +1,30 @@
+@import url("chrome://global/skin/");
+@import url("chrome://lsfbar/skin/table.css");
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+.rep-project-update > image {display: none;}
+.rep-project-group {width: 200px;}
+
+/* окно обновления проектов */
+#lsfbar-repoupdater-window {min-width: 800px; min-height: 600px; margin: 0; padding: 5px 10px 10px 10px;}
+#lsfbar-repoupdater-window .projects {min-height: 200px;}
+#lsfbar-repoupdater-window .error {color: #ff0000;}
+#lsfbar-repoupdater-window .btbox .btbox-item {margin: 0; padding: 0; -moz-appearance: toolbarbutton;height: auto;min-height: 20px;min-width: 20px;cursor: pointer;}
+
+/* вывод лога результата выполнения операции */
+.rep-log {min-height: 200px; height: 200px;-moz-box-flex: 1;}
+.rep-log-items {overflow-y: hidden !important;}
+.rep-log-items-box {overflow-y: auto; -moz-box-flex: 1 !important; border-right: 1px solid #ede9e2;}
+.rep-log-item {-moz-box-flex: 0 !important;border-bottom: 1px solid #ede9e2 !important;padding: 2px 8px 2px 8px !important;}
+.rep-log-resp {-moz-appearance: none;-moz-box-flex: 1; background: #ffffff; border: none; padding: 0; margin: 5px;font: 11px sans-serif, serif;color: #000;}
+.rep-log-resp-box {-moz-box-flex: 4; padding: 0; margin: 0;}
+.rep-log-toggle {background: url("chrome://lsfbar/skin/images/right-16x16.png") right no-repeat;padding-right: 20px;cursor: pointer;}
+.rep-log-toggle.open {background: url("chrome://lsfbar/skin/images/down2-16x16.png") right no-repeat !important;}
+.rep-log-splitter {border: none;}
+
+/* окно подтверждения операции */
+#lsfbar-repoupdater-confirm {-moz-appearance: none; width: 390px; min-height: 320px;}
+
+.table-item.content {font-size: 12px; cursor: pointer;}
+.table-item.content.head {font-size: 14px;}
+.table-item.button {font-size: 14px;}

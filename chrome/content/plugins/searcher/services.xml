@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE menu [
+    <!ENTITY % linksDTD SYSTEM "chrome://lsfbar/locale/links.dtd">
+    %linksDTD;
+]>
+
+<services xmlns="urn:data" id="services">
+    <group id="searchengine">
+        <service id="tophotels"
+                 name="&lsfbar.searchengine.tophotels.name;"
+                 image="tophotels"
+                 host="&lsfbar.link.tophotels;" 
+                 search-url="&lsfbar.searchengine.tophotels.search.url;"
+                 autocomplete-url="&lsfbar.searchengine.tophotels.autocomplete.url;"
+                 tooltiptext="&lsfbar.searchengine.tophotels.tooltiptext;"
+                 icon="&lsfbar.searchengine.tophotels.icon;"
+                 richpopup="1"
+                 search-action="1"/>
+                 
+        <service id="turpoisk"
+                 name="&lsfbar.searchengine.turpoisk.name;"
+                 image="turpoisk"
+                 host="&lsfbar.link.turpoisk;"
+                 search-url="&lsfbar.searchengine.turpoisk.search.url;"
+                 autocomplete-url="&lsfbar.searchengine.turpoisk.autocomplete.url;"
+                 tooltiptext="&lsfbar.searchengine.turpoisk.tooltiptext;"
+                 icon="&lsfbar.searchengine.turpoisk.icon;"
+                 richpopup="0"
+                 search-action="2"/>
+                 
+        <service id="wiki"
+                 name="&lsfbar.searchengine.wiki.name;"
+                 image="wiki"
+                 host="&lsfbar.link.wiki;"
+                 search-url="&lsfbar.searchengine.wiki.search.url;"
+                 autocomplete-url="&lsfbar.searchengine.wiki.autocomplete.url;"
+                 tooltiptext="&lsfbar.searchengine.wiki.tooltiptext;"
+                 icon="&lsfbar.searchengine.wiki.icon;"
+                 richpopup="0"
+                 search-action="3"/>
+                 
+        <service id="mantis"
+                 name="&lsfbar.searchengine.mantis.name;"
+                 image="mantis"
+                 host="&lsfbar.link.tracker;"
+                 search-url="&lsfbar.searchengine.mantis.search.url;"
+                 autocomplete-url="&lsfbar.searchengine.mantis.autocomplete.url;"
+                 tooltiptext="&lsfbar.searchengine.mantis.tooltiptext;"
+                 icon="&lsfbar.searchengine.mantis.icon;"
+                 richpopup="0"
+                 search-action="4"
+                 filter="let t = aText.match(/\d{5,8}/); if (!t) { throw 'error1'; return; } if (!t[0]) { throw 'error2'; return; }  return t[0];"/>
+    </group>
+</services>

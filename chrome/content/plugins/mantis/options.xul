@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://lsfbar/skin/plugins/mantis-options.css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % mantisDTD SYSTEM "chrome://lsfbar/locale/plugins/mantis.dtd">
+    %mantisDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <prefpane id="mantis">
+        <groupbox>
+            <caption label="&lsfbar.mantis.reload.label;"/>
+
+            <checkbox id="mantis-reload-control"
+                      label="&lsfbar.mantis.isreload.label;" />
+            
+            <hbox align="baseline">
+                <label value="&lsfbar.mantis.reload.interval1.label;"/>
+                <textbox id="mantis-reloadinterval-control"
+                         type="number" 
+                         min="1" 
+                         max="20"
+                         style="width:50px;"/>
+                <label value="&lsfbar.mantis.reload.interval2.label;"/>
+            </hbox>
+        </groupbox>
+
+        <separator height="10"/>
+
+        <box flex="1">
+            <vbox flex="1"
+                  id="mantis-tasks-box-base">
+
+                <label value="&lsfbar.mantis.selecttasks;"/>
+                <separator height="3"/>
+                <listbox flex="1" id="mantis-tasks-box"></listbox>
+            </vbox>
+
+            <separator width="3"/>
+
+            <vbox>
+                <spacer flex="1"/>
+                <button id="mantis-tasks-append" 
+                        class="right" />
+                <button id="mantis-tasks-delete" 
+                        class="left" />
+                <spacer flex="1"/>
+            </vbox>
+
+            <separator width="3"/>
+
+            <vbox flex="2"
+                  id="mantis-tasks-current-base">
+
+                <label value="&lsfbar.mantis.currenttasks;"/>
+                <separator height="3"/>
+                <listbox flex="1" id="mantis-tasks-current"></listbox>
+            </vbox>
+        </box>
+
+        <separator height="5"/>
+
+        <box align="baseline">
+            <description>&lsfbar.mantis.show;</description>
+            <menulist id="mantis-tasks-show">
+                <menupopup>
+                    <menuitem label="&lsfbar.mantis.show.mark;" value="0"/>
+                    <menuitem label="&lsfbar.mantis.show.textmark;" value="1"/>
+                    <menuitem label="&lsfbar.mantis.show.text;" value="2"/>
+                </menupopup>
+            </menulist>
+
+            <checkbox id="mantis-tasks-showcount"
+                      label="&lsfbar.mantis.showcount;" />
+        </box>
+    </prefpane>
+</overlay>

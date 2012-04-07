@@ -1,0 +1,6 @@
+<!ENTITY lsfbar.options.title "Настройки LSFBar">
+<!ENTITY lsfbar.options.tools.label "Инструменты">
+<!ENTITY lsfbar.options.mantis.label "Mantis">
+<!ENTITY lsfbar.options.debugger.label "Debugger">
+<!ENTITY lsfbar.options.toolbarset.label "Кнопки">
+<!ENTITY lsfbar.options.repoupdater.label "Repoupdater">

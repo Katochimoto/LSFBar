@@ -1,0 +1,27 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#mantis-tasks-box > listitem {
+    padding: 5px;
+}
+
+#mantis-tasks-current > listitem {
+    padding: 5px;
+}
+
+#mantis .right {
+    list-style-image: url("chrome://lsfbar/skin/images/right-16x16.png");
+    min-width: 32px;
+    max-width: 32px;
+    width: 32px;
+}
+
+#mantis .left {
+    list-style-image: url("chrome://lsfbar/skin/images/left-16x16.png");
+    min-width: 32px;
+    max-width: 32px;
+    width: 32px;
+}
+
+#mantis-tasks-show {
+    width: 200px;
+}

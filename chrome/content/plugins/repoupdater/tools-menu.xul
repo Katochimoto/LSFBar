@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % repoupdaterDTD SYSTEM "chrome://lsfbar/locale/plugins/repoupdater.dtd">
+    %repoupdaterDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript"
+            src="chrome://lsfbar/content/plugins/repoupdater/tools-menu.js"/>
+
+    <menuitem id="lsfbar-toolbar-tools-repoupdater" label="&lsfbar.repoupdater.label;"/>
+</overlay>

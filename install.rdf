@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+    <Description about="urn:mozilla:install-manifest">
+        <em:id>lsfbar@lightsoft.ru</em:id>
+        <em:version>3.0.0</em:version>
+        <em:type>2</em:type>
+        <em:unpack>true</em:unpack>
+
+        <em:targetApplication>
+            <Description>
+                <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+                <em:minVersion>6</em:minVersion>
+                <em:maxVersion>16.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+
+        <em:name>LSFBar</em:name>
+        <em:description>LightSoft FireFox toolbar</em:description>
+        <em:creator>LightSoft</em:creator>
+        <em:developer>Anton Tursenev</em:developer>
+
+        <em:iconURL>chrome://lsfbar/skin/images/bar-logo.png</em:iconURL>
+        <em:aboutURL>chrome://lsfbar/content/about/about.xul</em:aboutURL>
+        <em:updateURL>https://lsfbar.googlecode.com/files/update.rdf</em:updateURL>
+        <em:homepageURL>http://code.google.com/p/lsfbar/</em:homepageURL>
+        <em:optionsURL>chrome://lsfbar/content/options/options.xul</em:optionsURL>
+        <!-- 1: Opens optionsURL in a dialog box -->
+        <!-- 2: Options are displayed inside the Add-on Manager -->
+        <!-- 3: Opens optionsURL in a new tab -->
+        <em:optionsType>1</em:optionsType>
+    </Description>
+</RDF>

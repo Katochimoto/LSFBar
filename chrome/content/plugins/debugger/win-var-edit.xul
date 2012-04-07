@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE bindings [
+    <!ENTITY % debuggerDTD SYSTEM "chrome://lsfbar/locale/plugins/debugger.dtd">
+    %debuggerDTD;
+]>
+
+<dialog title="&lsfbar.debugger.settings.varedit.title;"
+    id="lsfbar-settings-tools-varedit"
+    windowtype="lsfbar:settingstoolsvaredit"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    onload="onLoad();"
+    ondialogaccept="return onOK();">
+
+    <script type="application/javascript" src="chrome://lsfbar/content/plugins/debugger/win-var-edit.js"/>
+
+    <grid>
+        <columns><column/><column/></columns>
+        <rows>
+            <row align="center">
+                <textbox id="var_id" value="0" style="display: none;"/>
+                <textbox id="host_id" value="0" style="display: none;"/>
+
+                <label value="&lsfbar.debugger.settings.varedit.name;"/>
+                <textbox id="name" maxlength="50"/>
+            </row>
+            <row align="center">
+                <label value="&lsfbar.debugger.settings.varedit.value;"/>
+                <textbox id="value" maxlength="50"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="is_get" label="&lsfbar.debugger.settings.varedit.isget;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="is_cookies" label="&lsfbar.debugger.settings.varedit.iscookies;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_db" label="&lsfbar.debugger.settings.varedit.trcdb;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_templ" label="&lsfbar.debugger.settings.varedit.trctempl;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_err" label="&lsfbar.debugger.settings.varedit.trcerr;"/>
+            </row>
+            <row align="center">
+                <spacer/>
+                <checkbox id="trc_other" label="&lsfbar.debugger.settings.varedit.trcother;"/>
+            </row>
+        </rows>
+    </grid>
+</dialog>

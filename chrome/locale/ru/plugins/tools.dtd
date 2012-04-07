@@ -1,0 +1,5 @@
+<!ENTITY lsfbar.tooling.label "Инструменты">
+<!ENTITY lsfbar.tooling.settings.label "Настройки">
+<!ENTITY lsfbar.tooling.settings.base "Общие">
+<!ENTITY lsfbar.tooling.settings.dbg "Дебаггер">
+<!ENTITY lsfbar.tooling.settings.repoupdater "Repoupdater">

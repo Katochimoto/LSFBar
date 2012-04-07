@@ -1,0 +1,35 @@
+<!ENTITY lsfbar.mantis.label "Mantis">
+
+<!ENTITY lsfbar.mantis.task.open "Открыть обращение">
+<!ENTITY lsfbar.mantis.tasks.total.label "Всего задач">
+<!ENTITY lsfbar.mantis.tasks.errors.label "Ошибки">
+<!ENTITY lsfbar.mantis.tasks.errorscritical.label "Критические ошибки">
+<!ENTITY lsfbar.mantis.tasks.feedback.label "Информация">
+<!ENTITY lsfbar.mantis.tasks.addressed.label "Адресовано">
+<!ENTITY lsfbar.mantis.tasks.confirmed.label "Выполняется">
+<!ENTITY lsfbar.mantis.tasks.resolved.label "Тестируется">
+<!ENTITY lsfbar.mantis.tasks.release.label "Релиз">
+<!ENTITY lsfbar.mantis.tasks.acknowledged.label "Отложено">
+<!ENTITY lsfbar.mantis.tasks.favorites.label "Избранные">
+<!ENTITY lsfbar.mantis.tasks.severity.label "Большая важность">
+<!ENTITY lsfbar.mantis.tasks.priority.label "Высокий приоритет">
+<!ENTITY lsfbar.mantis.tasks.routinecategory.label "Рутина">
+<!ENTITY lsfbar.mantis.tasks.routineproject.label "Рутина - проект">
+<!ENTITY lsfbar.mantis.tasks.deadline.label "Дедлайн">
+<!ENTITY lsfbar.mantis.tasks.assign.label "Назначено">
+<!ENTITY lsfbar.mantis.tasks.submitted.label "Изменено за 24 часа">
+<!ENTITY lsfbar.mantis.tasks.online.label "Онлайн">
+
+
+<!ENTITY lsfbar.mantis.reload.interval1.label "Интервал обновления списка обращений, раз в">
+<!ENTITY lsfbar.mantis.reload.interval2.label "мин.">
+<!ENTITY lsfbar.mantis.currenttasks "Группы задач в Баре">
+<!ENTITY lsfbar.mantis.selecttasks "Доступные группы задач">
+<!ENTITY lsfbar.mantis.reload.label "Обновление">
+<!ENTITY lsfbar.mantis.isreload.label "Обновлять список обращений">
+
+<!ENTITY lsfbar.mantis.show "Показывать:">
+<!ENTITY lsfbar.mantis.show.mark "Только значки">
+<!ENTITY lsfbar.mantis.show.text "Только текст">
+<!ENTITY lsfbar.mantis.show.textmark "Значки и текст">
+<!ENTITY lsfbar.mantis.showcount "Показывать количество задач">
