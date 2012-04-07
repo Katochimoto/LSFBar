@@ -36,7 +36,7 @@
         <separator flex="1"/>
 
         <html:div id="bar-copyright">
-            &#169; 2001&#160;&#8211;<html:span id="copyright-year">&#160;2011</html:span>
+            &#169; 2001&#160;&#8211;<html:span id="copyright-year">&#160;2012</html:span>
             &#171;&lsfbar.about.bar.lsf.label;&#187;
         </html:div>
 
