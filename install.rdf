@@ -5,7 +5,7 @@
 
     <Description about="urn:mozilla:install-manifest">
         <em:id>lsfbar@lightsoft.ru</em:id>
-        <em:version>3.0.1</em:version>
+        <em:version>3.0.2</em:version>
         <em:type>2</em:type>
         <em:unpack>true</em:unpack>
 
@@ -24,8 +24,8 @@
 
         <em:iconURL>chrome://lsfbar/skin/images/bar-logo.png</em:iconURL>
         <em:aboutURL>chrome://lsfbar/content/about/about.xul</em:aboutURL>
-        <em:updateURL>https://github.com/downloads/Katochimoto/LSFBar/update.rdf</em:updateURL>
-        <em:homepageURL>https://github.com/Katochimoto/LSFBar</em:homepageURL>
+        <em:updateURL>https://cloud.github.com/downloads/Katochimoto/LSFBar/update.rdf</em:updateURL>
+        <em:homepageURL>http://github.com/Katochimoto/LSFBar</em:homepageURL>
         <em:optionsURL>chrome://lsfbar/content/options/options.xul</em:optionsURL>
         <!-- 1: Opens optionsURL in a dialog box -->
         <!-- 2: Options are displayed inside the Add-on Manager -->
