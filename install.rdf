@@ -13,7 +13,7 @@
             <Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                 <em:minVersion>6</em:minVersion>
-                <em:maxVersion>16.*</em:maxVersion>
+                <em:maxVersion>12.*</em:maxVersion>
             </Description>
         </em:targetApplication>
 
@@ -24,8 +24,8 @@
 
         <em:iconURL>chrome://lsfbar/skin/images/bar-logo.png</em:iconURL>
         <em:aboutURL>chrome://lsfbar/content/about/about.xul</em:aboutURL>
-        <em:updateURL>https://lsfbar.googlecode.com/files/update.rdf</em:updateURL>
-        <em:homepageURL>http://code.google.com/p/lsfbar/</em:homepageURL>
+        <em:updateURL>https://github.com/downloads/Katochimoto/LSFBar/update.rdf</em:updateURL>
+        <em:homepageURL>https://github.com/Katochimoto/LSFBar</em:homepageURL>
         <em:optionsURL>chrome://lsfbar/content/options/options.xul</em:optionsURL>
         <!-- 1: Opens optionsURL in a dialog box -->
         <!-- 2: Options are displayed inside the Add-on Manager -->
