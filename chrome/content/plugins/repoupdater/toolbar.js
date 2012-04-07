@@ -5,11 +5,15 @@ const PALETTE_REPOUPDATER = 'lsfbar-toolbar-repoupdater';
 var toolbarRepoupdater = app.plugin({
     _init: function() {
         Palette.onshow(PALETTE_REPOUPDATER, function() {
-            e('lsfbar-toolbar-repoupdater').addEventListener('command', this.onaction, false);
+            try {
+                e('lsfbar-toolbar-repoupdater').addEventListener('command', this.onaction, false);
+            } catch (e) {}
         }, this);
 
         Palette.onhide(PALETTE_MANTIS, function() {
-            e('lsfbar-toolbar-repoupdater').removeEventListener('command', this.onaction, false);
+            try {
+                e('lsfbar-toolbar-repoupdater').removeEventListener('command', this.onaction, false);
+            } catch (e) {}
         }, this);
     },
 

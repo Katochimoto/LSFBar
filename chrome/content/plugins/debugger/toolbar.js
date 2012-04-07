@@ -39,7 +39,9 @@ var toolbarDebug = app.plugin({
         }, this);
 
         Palette.onhide(PALETTE_DEBUG, function() {
-            e('lsfbar-toolbar-debugger').removeEventListener('command', this.onaction, false);
+            try {
+                e('lsfbar-toolbar-debugger').removeEventListener('command', this.onaction, false);
+            } catch (e) {}
         }, this);
     },
 

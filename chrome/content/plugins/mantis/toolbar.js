@@ -23,13 +23,13 @@ var toolbarMantis = app.plugin({
             try {
                 e('lsfbar-mantis-grouptasks').removeEventListener('command', this.ongototasks, false);
                 e('lsfbar-mantis-tasksbox').removeEventListener('command', this.ongototasks, false);
-            } catch (e) {}
 
-            let m = document.getElementsByTagName('mantis')[0];
-            Observers.remove(Mantis.EV.TASKS_RESET, this.ontasksreset, m);
-            Preferences.ignore(Mantis.PREF.DEFAULT_STATUS, this.onchangedefaultstatus, m);
-            Preferences.ignore(Mantis.PREF.TASKS_SHOW, this.onchangetasksshow, m);
-            Preferences.ignore(Mantis.PREF.SHOW_COUNT, this.onchangeshowcount, m);
+                let m = document.getElementsByTagName('mantis')[0];
+                Observers.remove(Mantis.EV.TASKS_RESET, this.ontasksreset, m);
+                Preferences.ignore(Mantis.PREF.DEFAULT_STATUS, this.onchangedefaultstatus, m);
+                Preferences.ignore(Mantis.PREF.TASKS_SHOW, this.onchangetasksshow, m);
+                Preferences.ignore(Mantis.PREF.SHOW_COUNT, this.onchangeshowcount, m);
+            } catch (e) {}
         }, this);
     },
 

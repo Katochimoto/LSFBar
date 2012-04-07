@@ -9,25 +9,21 @@ var toolbarMenu = app.plugin({
         this.option('transform', 'chrome://lsfbar/content/plugins/menu/transform.xsl');
 
         Palette.onshow(PALETTE_MENU, function() {
-            let menu = document.getElementsByClassName('lsfbar-toolbar-menu')[0];
-            if (menu) {
+            try {
+                let menu = document.getElementsByClassName('lsfbar-toolbar-menu')[0];
                 menu.addEventListener('command', this.onclick, false);
                 let popup = menu.getElementsByClassName('lsfbar-toolbar-menu-popup')[0]
-                if (popup) {
-                    popup.addEventListener('popupshown', this.onrebuid, false);
-                }
-            }
+                popup.addEventListener('popupshown', this.onrebuid, false);
+            } catch (e) {}
         }, this);
 
         Palette.onhide(PALETTE_MENU, function() {
-            let menu = document.getElementsByClassName('lsfbar-toolbar-menu')[0];
-            if (menu) {
+            try {
+                let menu = document.getElementsByClassName('lsfbar-toolbar-menu')[0];
                 menu.removeEventListener('command', this.onclick, false);
                 let popup = menu.getElementsByClassName('lsfbar-toolbar-menu-popup')[0]
-                if (popup) {
-                    popup.removeEventListener('popupshown', this.onrebuid, false);
-                }
-            }
+                popup.removeEventListener('popupshown', this.onrebuid, false);
+            } catch (e) {}
         }, this);
     },
 
