@@ -32,14 +32,14 @@ var toolsDebug =  app.plugin({
         });
 
         Palette.onshow(PALETTE_TOOLS, function() {
-            // текущая инициализация
-            // создает событие Debug.EV.SETTINGS_CHANGE
             Debug.settings();
             e('lsfbar-toolbar-tools-debugger').addEventListener('command', this.onaction, false);
         }, this);
 
         Palette.onhide(PALETTE_TOOLS, function() {
-            e('lsfbar-toolbar-tools-debugger').removeEventListener('command', this.onaction, false);
+            try {
+                e('lsfbar-toolbar-tools-debugger').removeEventListener('command', this.onaction, false);
+            } catch (e) {}
         }, this);
     },
 
