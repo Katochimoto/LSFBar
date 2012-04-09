@@ -25,7 +25,7 @@
         <em:iconURL>chrome://lsfbar/skin/images/bar-logo.png</em:iconURL>
         <em:aboutURL>chrome://lsfbar/content/about/about.xul</em:aboutURL>
         <em:updateURL>https://lsfbar.googlecode.com/files/update.rdf</em:updateURL>
-        <em:homepageURL>http://github.com/Katochimoto/LSFBar</em:homepageURL>
+        <em:homepageURL>http://katochimoto.github.com/LSFBar/</em:homepageURL>
         <em:optionsURL>chrome://lsfbar/content/options/options.xul</em:optionsURL>
         <!-- 1: Opens optionsURL in a dialog box -->
         <!-- 2: Options are displayed inside the Add-on Manager -->
