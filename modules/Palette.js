@@ -3,24 +3,37 @@
 let EXPORTED_SYMBOLS = ['Palette'];
 
 Components.utils.import('resource://lsfbar/Win.js');
+Components.utils.import('resource://lsfbar/Console.js');
 
 let win = Win.windowInternal(),
     _toolbarClass = 'lsfbar-toolbar';
 
 const Palette = {
     onshow: function(aPalette, aCallback, aThisObj) {
-        win.lsfbar.palette.onshow.push([aPalette, aCallback, aThisObj]);
+        let palette = win.lsfbar.palette;
+        palette.onshow.push([aPalette, aCallback, aThisObj]);
 
-        if (win.lsfbar.palette.current.indexOf(aPalette) > -1) {
-            aCallback.call(aThisObj);
+        if (palette.current.indexOf(aPalette) > -1 && !defined(palette.init[aPalette])) {
+            try {
+                aCallback.call(aThisObj);
+                palette.init[aPalette] = true;
+            } catch (e) {
+                Components.utils.reportError(e);
+            }
         }
     },
 
     onhide: function(aPalette, aCallback, aThisObj) {
-        win.lsfbar.palette.onhide.push([aPalette, aCallback, aThisObj]);
+        let palette = win.lsfbar.palette;
+        palette.onhide.push([aPalette, aCallback, aThisObj]);
 
-        if (win.lsfbar.palette.current.indexOf(aPalette) == -1) {
-            aCallback.call(aThisObj);
+        if (palette.current.indexOf(aPalette) == -1 && defined(palette.init[aPalette])) {
+            try {
+                aCallback.call(aThisObj);
+                delete palette.init[aPalette];
+            } catch (e) {
+                Components.utils.reportError(e);
+            }
         }
     },
 
@@ -30,14 +43,22 @@ const Palette = {
             win.lsfbar.palette['on' + aEvent].filter(function(aCallback) {
                 return (aCallback[0] == aPalette);
             }).forEach(function(aCallback) {
-                aCallback[1].call(aCallback[2]);
+                try {
+                    aCallback[1].call(aCallback[2]);
+                } catch (e) {
+                    Components.utils.reportError(e);
+                }
             });
 
         } else {
             win.lsfbar.palette['on' + aEvent].filter(function(aCallback) {
                 return (win.lsfbar.palette.current.indexOf(aCallback[0]) > -1);
             }).forEach(function(aCallback) {
-                aCallback[1].call(aCallback[2]);
+                try {
+                    aCallback[1].call(aCallback[2]);
+                } catch (e) {
+                    Components.utils.reportError(e);
+                }
             });
         }
     }
@@ -92,6 +113,8 @@ function customizeEnd(aEvt) {
 
     evtChange(add, true);
     evtChange(remove, false);
+
+    Palette.bind('show', 'lsfbar-toolbar-mantis');
 }
 
 //function customizeChange(aEvt) {
@@ -104,8 +127,16 @@ function evtChange(aPallets, aShow) {
     aPallets.forEach(function(aName) {
         events.forEach(function(aCallback) {
             if (aCallback[0] == aName) {
-                aCallback[1].call(aCallback[2]);
+                try {
+                    aCallback[1].call(aCallback[2]);
+                } catch (e) {
+                    Components.utils.reportError(e);
+                }
             }
         });
     });
+}
+
+function defined(aVal) {
+    return (typeof aVal != 'undefined' && aVal != null);
 }

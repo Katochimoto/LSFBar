@@ -7,29 +7,45 @@ var toolbarMantis = app.plugin({
         Palette.onshow(PALETTE_MANTIS, function() {
             Observers.notify(Mantis.EV.CHECK_START);
 
-            e('lsfbar-mantis-grouptasks').addEventListener('command', this.ongototasks, false);
-            e('lsfbar-mantis-tasksbox').addEventListener('command', this.ongototasks, false);
+            let grouptasks = e('lsfbar-mantis-grouptasks');
+            if (grouptasks) {
+                grouptasks.addEventListener('command', this.ongototasks, false);
+            }
+
+            let tasksbox = e('lsfbar-mantis-tasksbox');
+            if (tasksbox) {
+                tasksbox.addEventListener('command', this.ongototasks, false);
+            }
 
             let m = document.getElementsByTagName('mantis')[0];
-            Observers.add(Mantis.EV.TASKS_RESET, this.ontasksreset, m);
-            Preferences.observe(Mantis.PREF.DEFAULT_STATUS, this.onchangedefaultstatus, m);
-            Preferences.observe(Mantis.PREF.TASKS_SHOW, this.onchangetasksshow, m);
-            Preferences.observe(Mantis.PREF.SHOW_COUNT, this.onchangeshowcount, m);
+            if (m) {
+                Observers.add(Mantis.EV.TASKS_RESET, this.ontasksreset, m);
+                Preferences.observe(Mantis.PREF.DEFAULT_STATUS, this.onchangedefaultstatus, m);
+                Preferences.observe(Mantis.PREF.TASKS_SHOW, this.onchangetasksshow, m);
+                Preferences.observe(Mantis.PREF.SHOW_COUNT, this.onchangeshowcount, m);
+            }
         }, this);
 
         Palette.onhide(PALETTE_MANTIS, function() {
             Observers.notify(Mantis.EV.CHECK_STOP);
 
-            try {
-                e('lsfbar-mantis-grouptasks').removeEventListener('command', this.ongototasks, false);
-                e('lsfbar-mantis-tasksbox').removeEventListener('command', this.ongototasks, false);
+            let grouptasks = e('lsfbar-mantis-grouptasks');
+            if (grouptasks) {
+                grouptasks.removeEventListener('command', this.ongototasks, false);
+            }
 
-                let m = document.getElementsByTagName('mantis')[0];
+            let tasksbox = e('lsfbar-mantis-tasksbox');
+            if (tasksbox) {
+                tasksbox.removeEventListener('command', this.ongototasks, false);
+            }
+
+            let m = document.getElementsByTagName('mantis')[0];
+            if (m) {
                 Observers.remove(Mantis.EV.TASKS_RESET, this.ontasksreset, m);
                 Preferences.ignore(Mantis.PREF.DEFAULT_STATUS, this.onchangedefaultstatus, m);
                 Preferences.ignore(Mantis.PREF.TASKS_SHOW, this.onchangetasksshow, m);
                 Preferences.ignore(Mantis.PREF.SHOW_COUNT, this.onchangeshowcount, m);
-            } catch (e) {}
+            }
         }, this);
     },
 

@@ -52,13 +52,14 @@ function toString(aData, aShift, aLoop) {
                 if (isString(v)) {
                     str.push(aShift + toString.stepShift + v);
                 } else {
-                    str.push(aShift + toString.stepShift + arguments.callee.call(this, v, aShift, aLoop));
+                    str.push(aShift + toString.stepShift + toString.call(this, v, aShift, aLoop));
                 }
             }
             return '[\n' + str.join(',\n') + '\n' + aShift + ']';
             break;
         case '[object Object]':
         case '[object Event]':
+        case '[object Error]':
         case '[object ChromeWindow]':
         case '[object XULDocument]':
             var str = [];
@@ -67,7 +68,7 @@ function toString(aData, aShift, aLoop) {
                 if (isString(v)) {
                     str.push(aShift + toString.stepShift + String(i) + ': ' + v);
                 } else {
-                    str.push(aShift + toString.stepShift + String(i) + ': ' + arguments.callee.call(this, v, aShift, aLoop));
+                    str.push(aShift + toString.stepShift + String(i) + ': ' + toString.call(this, v, aShift, aLoop));
                 }
             }
             return '{\n' + str.join(',\n') + '\n' + aShift + '}';

@@ -33,13 +33,17 @@ var toolsDebug =  app.plugin({
 
         Palette.onshow(PALETTE_TOOLS, function() {
             Debug.settings();
-            e('lsfbar-toolbar-tools-debugger').addEventListener('command', this.onaction, false);
+            let el = e('lsfbar-toolbar-tools-debugger');
+            if (el) {
+                el.addEventListener('command', this.onaction, false);
+            }
         }, this);
 
         Palette.onhide(PALETTE_TOOLS, function() {
-            try {
-                e('lsfbar-toolbar-tools-debugger').removeEventListener('command', this.onaction, false);
-            } catch (e) {}
+            let el = e('lsfbar-toolbar-tools-debugger');
+            if (el) {
+                el.removeEventListener('command', this.onaction, false);
+            }
         }, this);
     },
 

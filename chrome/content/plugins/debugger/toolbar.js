@@ -35,13 +35,17 @@ var toolbarDebug = app.plugin({
 
         Palette.onshow(PALETTE_DEBUG, function() {
             Debug.settings();
-            e('lsfbar-toolbar-debugger').addEventListener('command', this.onaction, false);
+            let el = e('lsfbar-toolbar-debugger');
+            if (el) {
+                el.addEventListener('command', this.onaction, false);
+            }
         }, this);
 
         Palette.onhide(PALETTE_DEBUG, function() {
-            try {
-                e('lsfbar-toolbar-debugger').removeEventListener('command', this.onaction, false);
-            } catch (e) {}
+            let el = e('lsfbar-toolbar-debugger');
+            if (el) {
+                el.removeEventListener('command', this.onaction, false);
+            }
         }, this);
     },
 

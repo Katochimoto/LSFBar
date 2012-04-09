@@ -3,11 +3,17 @@
 var toolsRepoupdater =  app.plugin({
     _init: function() {
         Palette.onshow(PALETTE_TOOLS, function() {
-            e('lsfbar-toolbar-tools-repoupdater').addEventListener('command', this.onaction, false);
+            let el = e('lsfbar-toolbar-tools-repoupdater');
+            if (el) {
+                e('lsfbar-toolbar-tools-repoupdater').addEventListener('command', this.onaction, false);
+            }
         }, this);
 
         Palette.onhide(PALETTE_TOOLS, function() {
-            e('lsfbar-toolbar-tools-repoupdater').removeEventListener('command', this.onaction, false);
+            let el = e('lsfbar-toolbar-tools-repoupdater');
+            if (el) {
+                e('lsfbar-toolbar-tools-repoupdater').removeEventListener('command', this.onaction, false);
+            }
         }, this);
     },
 

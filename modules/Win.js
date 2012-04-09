@@ -7,6 +7,7 @@ let Ci = Components.interfaces,
     Cu = Components.utils;
 
 Cu.import('resource://lsfbar/Observers.js');
+Cu.import('resource://lsfbar/Console.js');
 
 const Win = {
     get windowMediator() {
@@ -34,7 +35,11 @@ const Win = {
         aThisObj = aThisObj || null;
 
         if (win.lsfbar.loaded) {
-            aCallback.call(aThisObj, win);
+            try {
+                aCallback.call(aThisObj, win);
+            } catch (e) {
+                Components.utils.reportError(e);
+            }
 
         } else {
             win.lsfbar.onload.push([aCallback, aThisObj]);
@@ -204,7 +209,8 @@ function windowInit(aWin) {
             palette: {
                 current: [],
                 onshow: [],
-                onhide: []
+                onhide: [],
+                init: {}
             }
         };
 
@@ -231,8 +237,12 @@ function windowLoadEvent(aWin) {
             }
 
             while(win.lsfbar.onunload.length) {
-                let callback = win.lsfbar.onunload.shift();
-                callback[0].call(callback[1], win);
+                try {
+                    let callback = win.lsfbar.onunload.shift();
+                    callback[0].call(callback[1], win);
+                } catch (e) {
+                    Components.utils.reportError(e);
+                }
             }
 
             delete win.lsfbar;
@@ -240,8 +250,12 @@ function windowLoadEvent(aWin) {
 
         win.lsfbar.loaded = true;
         while(win.lsfbar.onload.length) {
-            let callback = win.lsfbar.onload.shift();
-            callback[0].call(callback[1], win);
+            try {
+                let callback = win.lsfbar.onload.shift();
+                callback[0].call(callback[1], win);
+            } catch (e) {
+                Components.utils.reportError(e);
+            }
         }
     }, false);
 }
