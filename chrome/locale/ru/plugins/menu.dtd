@@ -61,5 +61,11 @@
 <!ENTITY lsfbar.menu.project.zabbix.tooltiptext "">
 <!ENTITY lsfbar.menu.project.tasker.label "Центр поддержки">
 <!ENTITY lsfbar.menu.project.tasker.tooltiptext "Tasker. Центр поддержки для клиентов компании LightSoft">
+<!ENTITY lsfbar.menu.project.wisemapping.label "Диаграммы связей (mind map)">
+<!ENTITY lsfbar.menu.project.wisemapping.tooltiptext "Диаграммы связей (mind map)">
+<!ENTITY lsfbar.menu.project.phpdoc.label "Документация преоктов (PHPDoc)">
+<!ENTITY lsfbar.menu.project.phpdoc.tooltiptext "Документация преоктов (PHPDoc)">
+<!ENTITY lsfbar.menu.project.lsf2samples.label "Примеры LSF2">
+<!ENTITY lsfbar.menu.project.lsf2samples.tooltiptext "Примеры LSF2">
 
 

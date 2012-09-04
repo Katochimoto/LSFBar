@@ -29,6 +29,9 @@
 <!ENTITY lsfbar.link.repoupdater "http://ls-server.ls1.ru/repoupdater">
 <!ENTITY lsfbar.link.zabbix "http://zabbix.lbc.ru/">
 <!ENTITY lsfbar.link.rutraveler "http://www.rutraveler.ru/">
+<!ENTITY lsfbar.link.wisemapping "http://wisemapping.db0.ru/">
+<!ENTITY lsfbar.link.phpdoc "http://phpdoc.ls1.ru/">
+<!ENTITY lsfbar.link.lsf2samples "http://lsf2-samples.db0.ru/">
 
 <!-- http://suggest.yandex.ru/suggest-ff.cgi?part= -->
 <!ENTITY lsfbar.searchengine.tophotels.autocomplete.url "http://tophotels.ru/action.php?action=lsfbar_hotel_search&amp;q=">

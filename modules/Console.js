@@ -26,7 +26,7 @@ function isString(aData) {
 
 function toString(aData, aShift, aLoop) {
     aShift = typeof aShift == 'undefined' ? '' : aShift + toString.stepShift;
-    aLoop = typeof aLoop == 'undefined' ? 5 : aLoop;
+    aLoop = typeof aLoop == 'undefined' ? 10 : aLoop;
 
     aLoop--;
     if (aLoop < 0) {

@@ -213,13 +213,13 @@ function saveResponce(aResponce) {
         return false;
     }
 
-    aResponce = Dom.string2xml(aResponce);
+    aResponce = Dom.string2jxon(aResponce);
 
-    if (typeof aResponce.state == 'undefined') {
+    if (typeof aResponce.result.state == 'undefined') {
         return false;
     }
 
-    if (aResponce.state != 'ok') {
+    if (aResponce.result.state != 'ok') {
         return false;
     }
 
@@ -246,24 +246,24 @@ function saveResponce(aResponce) {
     // количество задач предыдущего ответа переписываем в текущий
     var lastTasks = Mantis.tasks;
     if (defined(lastTasks)) {
-        var l = aResponce.task_status.status.length();
+        var l = aResponce.result.task_status.status.length;
         for (var nick in lastTasks) {
             for (var i = 0; i < l; i++) {
-                if (aResponce.task_status.status[i].nick == nick) {
-                    aResponce.task_status.status[i]['lastCnt'] = lastTasks[nick].count;
+                if (aResponce.result.task_status.status[i].nick == nick) {
+                    aResponce.result.task_status.status[i]['lastCnt'] = lastTasks[nick].count;
                 }
             }
         }
 
-        aResponce.online['lastCnt'] = lastTasks['online'].count;
+        aResponce.result.online['lastCnt'] = lastTasks['online'].count;
     }
 
     var tasks = {},
-        l = aResponce.task_status.status.length(),
+        l = aResponce.result.task_status.status.length,
         count, lastCount, inc, text, countText, name, url, s;
 
     for (var i = 0; i < l; i++) {
-        s = aResponce.task_status.status[i];
+        s = aResponce.result.task_status.status[i];
 
         if (!defined(s.nick)) {
             continue;
@@ -300,10 +300,10 @@ function saveResponce(aResponce) {
         };
     }
 
-    if (defined(aResponce.online)) {
+    if (defined(aResponce.result.online)) {
         name = StringBundle.getString('app.properties', 'mantis_online');
-        count = parseInt(aResponce.online.cnt);
-        lastCount = parseInt(aResponce.online.lastCnt);
+        count = parseInt(aResponce.result.online.cnt);
+        lastCount = parseInt(aResponce.result.online.lastCnt);
         inc = (count > lastCount) ? count - lastCount : 0;
         countText = (count > 0) ? '(' + count + (inc > 0 ? '+' + inc : '') + ')' : '';
         text = name + ' ' + countText;
@@ -317,7 +317,7 @@ function saveResponce(aResponce) {
             color: null,
             count: count,
             lastCount: lastCount,
-            url: aResponce.online.url.toString()
+            url: aResponce.result.online.url
         };
     }
 

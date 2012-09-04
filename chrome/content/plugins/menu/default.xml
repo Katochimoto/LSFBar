@@ -231,6 +231,34 @@
                     <image>zabbix-16x16.png</image>
                     <items/>
                 </project>
+                <project>
+                    <label>&lsfbar.menu.project.wisemapping.label;</label>
+                    <tooltip>&lsfbar.menu.project.wisemapping.tooltiptext;</tooltip>
+                    <href>&lsfbar.link.wisemapping;</href>
+                    <image/>
+                    <items/>
+                </project>
+                <project>
+                    <label>&lsfbar.menu.project.phpdoc.label;</label>
+                    <tooltip>&lsfbar.menu.project.phpdoc.tooltiptext;</tooltip>
+                    <href>&lsfbar.link.phpdoc;</href>
+                    <image/>
+                    <items/>
+                </project>
+                <project>
+                    <label>&lsfbar.menu.project.lsf2samples.label;</label>
+                    <tooltip>&lsfbar.menu.project.lsf2samples.tooltiptext;</tooltip>
+                    <href>&lsfbar.link.lsf2samples;</href>
+                    <image/>
+                    <items/>
+                </project>
+                <project>
+                    <label>&lsfbar.menu.project.uml.label;</label>
+                    <tooltip>&lsfbar.menu.project.uml.tooltiptext;</tooltip>
+                    <href>&lsfbar.link.uml;</href>
+                    <image/>
+                    <items/>
+                </project>
             </items>
         </project>
         <project sep="true">

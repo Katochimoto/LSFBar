@@ -139,10 +139,96 @@ const Dom = {
         return parser.parseFromString(xmlString, 'text/xml');
     },
 
+    /**
+     * @param string xmlString строка XML
+     * @return XMLDocument
+     */
     string2xml: function(xmlString) {
-        xmlString = xmlString.replace(/<\?xml .+\?>[\r\n]*/, "")
-            .replace(/(<!DOCTYPE ((.|\r|\n)*?)\]>)[\r\n]*/, "");
+        xmlString = xmlString.replace(/<\?xml .+\?>[\r\n]*/, "") .replace(/(<!DOCTYPE ((.|\r|\n)*?)\]>)[\r\n]*/, "");
         xmlString = this.parseFromString(xmlString);
-        return new XML(this.serializeToString(xmlString));
+        return xmlString;
+    },
+
+    /**
+     * @param string xmlString строка XML
+     * @return object объект JXON
+     */
+    string2jxon: function(xmlString) {
+        xmlString = xmlString.replace(/<\?xml .+\?>[\r\n]*/, "") .replace(/(<!DOCTYPE ((.|\r|\n)*?)\]>)[\r\n]*/, "");
+        xmlString = this.parseFromString(xmlString);
+        return getJXONTree(xmlString);
     }
 };
+
+
+function parseText(sValue) {
+    if (/^\s*$/.test(sValue)) {
+        return null;
+    }
+
+    if (/^(?:true|false)$/i.test(sValue)) {
+        return sValue.toLowerCase() === "true";
+    }
+
+    if (isFinite(sValue)) {
+        return parseFloat(sValue);
+    }
+
+    if (isFinite(Date.parse(sValue))) {
+        return new Date(sValue);
+    }
+
+    return sValue;
+}
+
+function getJXONTree(oXMLParent) {
+    var vResult = null, // значение по умолчанию для пустово узла
+        nLength = 0,
+        sCollectedTxt = "";
+
+    if (oXMLParent.hasAttributes()) {
+        vResult = {};
+        for (nLength; nLength < oXMLParent.attributes.length; nLength++) {
+            var oAttrib = oXMLParent.attributes.item(nLength);
+            vResult["@" + oAttrib.name.toLowerCase()] = parseText(oAttrib.value.trim());
+        }
+    }
+
+    if (oXMLParent.hasChildNodes()) {
+        for (var oNode, sProp, vContent, nItem = 0; nItem < oXMLParent.childNodes.length; nItem++) {
+            oNode = oXMLParent.childNodes.item(nItem);
+
+            if (oNode.nodeType === 4) {
+                sCollectedTxt += oNode.nodeValue;
+
+            } else if (oNode.nodeType === 3) {
+                sCollectedTxt += oNode.nodeValue.trim();
+
+            } else if (oNode.nodeType === 1 && !oNode.prefix) {
+                if (nLength === 0) {
+                    vResult = {};
+                }
+
+                sProp = oNode.nodeName.toLowerCase();
+                vContent = getJXONTree(oNode);
+                if (vResult.hasOwnProperty(sProp)) {
+                    if (vResult[sProp].constructor !== Array) {
+                        vResult[sProp] = [vResult[sProp]];
+                    }
+
+                    vResult[sProp].push(vContent);
+
+                } else {
+                    vResult[sProp] = vContent;
+                    nLength++;
+                }
+            }
+        }
+    }
+
+    if (sCollectedTxt) {
+        nLength > 0 ? vResult.keyValue = parseText(sCollectedTxt) : vResult = parseText(sCollectedTxt);
+    }
+
+    return vResult;
+}

@@ -102,11 +102,12 @@ function defined(val) {
 
 function saveProjects(aResp) {
     try {
-        var xml = Dom.string2xml(aResp);
-        if (defined(xml.state) && xml.state == 'ok') {
-            var serverLen = xml.servers.server.length(),
-                projLen = xml.projects.project.length(),
-                relLen = xml.relations.relation.length();
+        var jxon = Dom.string2jxon(aResp);
+
+        if (defined(jxon.response) && defined(jxon.response.state) && jxon.response.state == 'ok') {
+            var serverLen = jxon.response.servers.server.length,
+                projLen = jxon.response.projects.project.length,
+                relLen = jxon.response.relations.relation.length;
 
             try {
                 var conn = nsSqlite.openConnection(),
@@ -128,7 +129,7 @@ function saveProjects(aResp) {
                     stmt.finalize();
 
                     for (var i = 0; i < serverLen; i++) {
-                        var server = xml.servers.server[i];
+                        var server = jxon.response.servers.server[i];
                         stmt = conn.createStatement('INSERT OR IGNORE INTO lsfbar_rep_servers (id, name) VALUES (?, ?)');
                         stmt.bindInt64Parameter(0, Number(server.id));
                         stmt.bindUTF8StringParameter(1, String(server.name));
@@ -137,7 +138,7 @@ function saveProjects(aResp) {
                     }
 
                     for (var i = 0; i < projLen; i++) {
-                        var project = xml.projects.project[i];
+                        var project = jxon.response.projects.project[i];
                         stmt = conn.createStatement('INSERT OR IGNORE INTO lsfbar_rep_projects (id, name) VALUES (?, ?)');
                         stmt.bindInt64Parameter(0, Number(project.id));
                         stmt.bindUTF8StringParameter(1, String(project.name));
@@ -146,7 +147,7 @@ function saveProjects(aResp) {
                     }
 
                     for (var i = 0; i < relLen; i++) {
-                        var relation = xml.relations.relation[i];
+                        var relation = jxon.response.relations.relation[i];
                         stmt = conn.createStatement('INSERT OR IGNORE INTO lsfbar_rep_relations (server_id, project_id) VALUES (?, ?)');
                         stmt.bindInt64Parameter(0, Number(relation.server));
                         stmt.bindInt64Parameter(1, Number(relation.project));

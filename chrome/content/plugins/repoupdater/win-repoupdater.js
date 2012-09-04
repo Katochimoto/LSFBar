@@ -648,14 +648,14 @@ function onactionprojectdone(aSubject, aData) {
     switch (aSubject) {
         case 'ok':
             try {
-                let xml = Dom.string2xml(aData.responceText);
-                if (!defined(xml.state)) { throw new Error('Request failed'); }
-                if (xml.state != 'ok') { throw new Error('Request failed'); }
-                if (!defined(xml.status)) { throw new Error('Request failed'); }
-                if (xml.status != 'ok') { throw new Error(xml.message); }
+                let jxon = Dom.string2jxon(aData.responceText);
+                if (!defined(jxon.response.state)) { throw new Error('Request failed'); }
+                if (jxon.response.state != 'ok') { throw new Error('Request failed'); }
+                if (!defined(jxon.response.status)) { throw new Error('Request failed'); }
+                if (jxon.response.status != 'ok') { throw new Error(jxon.response.message); }
 
                 setStatus('success', s, p);
-                setLog('success', xml.message, s, p);
+                setLog('success', jxon.response.message, s, p);
 
             } catch (e) {
                 Console.log(e.message);
