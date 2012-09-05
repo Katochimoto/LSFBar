@@ -67,5 +67,6 @@
 <!ENTITY lsfbar.menu.project.phpdoc.tooltiptext "Документация преоктов (PHPDoc)">
 <!ENTITY lsfbar.menu.project.lsf2samples.label "Примеры LSF2">
 <!ENTITY lsfbar.menu.project.lsf2samples.tooltiptext "Примеры LSF2">
-
+<!ENTITY lsfbar.menu.project.uml.label "Диаграммы UML">
+<!ENTITY lsfbar.menu.project.uml.tooltiptext "Диаграммы UML">
 
