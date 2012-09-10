@@ -269,13 +269,13 @@ function saveResponce(aResponce) {
             continue;
         }
 
-        name = s.name.toString();
+        name = (defined(s.name)) ? s.name.toString() : '';
 
         if (!name.length) {
             continue;
         }
 
-        url = s.url.toString();
+        url = (defined(s.url)) ? s.url.toString() : '';
 
         if (!url.length) {
             continue;
@@ -293,7 +293,7 @@ function saveResponce(aResponce) {
             tooltiptext: text,
             text: text,
             countText: countText,
-            color: s.color.toString(),
+            color: (defined(s.color)) ? s.color.toString() : '',
             count: count,
             lastCount: lastCount,
             url: url
